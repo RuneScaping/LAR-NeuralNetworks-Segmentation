@@ -9,4 +9,12 @@ The model for HGG tumor modality is the following:
 | Layers      | Input           | Output |
 | --- |---|---|
 | Convolution | 4x33x33 | 64x33x33 |
-|Leaky Relu|
+|Leaky Relu| 64x33x33 | 64x33x33 |
+| Convolution  | 64x33x33| 64x33x33|
+|Leaky Relu| 64x33x33 | 64x33x33 |
+| Convolution  | 64x33x33| 64x33x33|
+|Leaky Relu| 64x33x33 | 64x33x33 |
+|Max Pooling|  64x33x33| 64x16x16 |
+| Convolution  | 64x16x16| 128x16x16|
+|Leaky Relu | 128x16x16| 128x16x16|
+| Convolut
