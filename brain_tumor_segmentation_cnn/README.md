@@ -50,4 +50,5 @@ For both models in the and is used the SoftMax activation function.
 	* brain_pipeline
 	* patch_extractor
 	* patch_library
- the conversion of all '.mha'  files into '.png'  to all brain images 
+ the conversion of all '.mha'  files into '.png'  to all brain images is performed. To each brain image from every patient, all different modalities ( (FLAIR), T1, T1-contrasted, and T2 )   are put together into one  single stripe .  The output for an image is the following:
+[image](https://github.com/cvdlab/nn-segmentation-for-lar/blob/mast
