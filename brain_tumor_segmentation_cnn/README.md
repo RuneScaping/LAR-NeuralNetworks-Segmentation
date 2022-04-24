@@ -39,4 +39,15 @@ The model for HGG tumor modality is the following:
 | Convolution  | 64x16x16| 128x16x16|
 |Leaky Relu| 128x16x16| 128x16x16|
 | Convolution  | 128x16x16| 128x16x16|
-|Max Pooling| 128
+|Max Pooling| 128x16x16| 128x7x7|
+|Fully Connected|6272|256|
+|Fully Connected|256|5|
+
+
+For both models in the and is used the SoftMax activation function.
+
+1.  In 
+	* brain_pipeline
+	* patch_extractor
+	* patch_library
+ the conversion of all '.mha'  files into '.png'  to all brain images 
