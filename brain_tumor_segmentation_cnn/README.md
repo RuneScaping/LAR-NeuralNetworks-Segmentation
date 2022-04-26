@@ -51,4 +51,8 @@ For both models in the and is used the SoftMax activation function.
 	* patch_extractor
 	* patch_library
  the conversion of all '.mha'  files into '.png'  to all brain images is performed. To each brain image from every patient, all different modalities ( (FLAIR), T1, T1-contrasted, and T2 )   are put together into one  single stripe .  The output for an image is the following:
-[image](https://github.com/cvdlab/nn-segmentation-for-lar/blob/mast
+[image](https://github.com/cvdlab/nn-segmentation-for-lar/blob/master/brain_tumor_segmentation_cnn/readme/1.png)
+
+ You can find brain_pipeline [here.](https://github.com/cvdlab/nn-segmentation-for-lar/tree/master/pre_processing)
+
+2.  in Segmentaion_Model the cnn models are created and compiled. Is possible to choose between hgg or lgg model (as descibed in the article) depending fr
