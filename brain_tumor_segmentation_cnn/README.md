@@ -64,4 +64,16 @@ The workflow is described as follow:
 
 
 ## Results 
-This is the seg
+This is the segmented image with a low number of patches 10000
+
+<img src="readme/result0_10000.png " width="100">
+<img src="readme/color_code.png " width="100">
+
+For a sharpen result 100000 or 150000 patches are reccomended 
+
+
+## How to use
+
+### Ho to run Cnn
+
+	user path/to/package $	python Seg
