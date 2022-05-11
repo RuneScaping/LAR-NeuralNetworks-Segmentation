@@ -55,4 +55,13 @@ For both models in the and is used the SoftMax activation function.
 
  You can find brain_pipeline [here.](https://github.com/cvdlab/nn-segmentation-for-lar/tree/master/pre_processing)
 
-2.  in Segmentaion_Model the cnn models are created and compiled. Is possible to choose between hgg or lgg model (as descibed in the article) depending fr
+2.  in Segmentaion_Model the cnn models are created and compiled. Is possible to choose between hgg or lgg model (as descibed in the article) depending from which kind of tumoral pattern is treated.
+
+3.  in image_png_converter there is a randomic conversion of a mha file into png file in order to output some testing material.
+
+The workflow is described as follow:
+<img src="readme/Brain Tumor Segmentation Pipeline.png">
+
+
+## Results 
+This is the seg
