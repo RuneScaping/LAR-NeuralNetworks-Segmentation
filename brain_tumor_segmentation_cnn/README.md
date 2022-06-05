@@ -76,4 +76,11 @@ For a sharpen result 100000 or 150000 patches are reccomended
 
 ### Ho to run Cnn
 
-	user path/to/package $	python Seg
+	user path/to/package $	python Segmentation_Model.py -option expected_value
+
+
+### All available Options
+	
+	-train','-t',		set the number of data to train with default=1000 (int value expected)
+                        
+	-augmentation','-a',		set data augmentation option through rotating angle express values in deg
