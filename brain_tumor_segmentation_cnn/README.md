@@ -87,4 +87,8 @@ For a sharpen result 100000 or 150000 patches are reccomended
 	
 	'-modality','-m',		set to use model for hgg(True) or lgg(False), default=True (boolean value expected)
                         
-	'-load','-l',		load the model already trained, as default no load happen. insert model name as: 'model_name' (string value expec
+	'-load','-l',		load the model already trained, as default no load happen. insert model name as: 'model_name' (string value expected)
+	
+	'-save', '-s',	save the trained model in the specified path, as  default no save happen( the name and all it's specification happens automatically) (no value expected)
+	
+	'-test',			execute test with the expressed datas (no value expected)
