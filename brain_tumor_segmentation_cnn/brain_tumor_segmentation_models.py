@@ -14,3 +14,10 @@ from glob import glob
 from skimage import io, color, img_as_float
 from skimage.exposure import adjust_gamma
 from sklearn.feature_extraction.image import extract_patches_2d
+from sklearn.metrics import classification_report
+from keras.utils import np_utils
+from keras.models import Sequential
+from keras.layers import Dense, Conv2D, MaxPool2D, Dropout, Activation, Flatten
+from keras.optimizers import SGD
+from keras.layers.advanced_activations import LeakyReLU
+from keras.c
