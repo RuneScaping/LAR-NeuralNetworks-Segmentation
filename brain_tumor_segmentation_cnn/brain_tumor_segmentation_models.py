@@ -30,4 +30,17 @@ import numpy as np
 import json
 import argparse
 import matplotlib.image as mpimg
-from
+from patch_library import PatchLibrary
+
+__author__ = "Cesare Catavitello"
+
+__license__ = "MIT"
+__version__ = "1.0.1"
+__maintainer__ = "Cesare Catavitello"
+__email__ = "cesarec88@gmail.com"
+__status__ = "Production"
+
+
+def mkdir_p(path):
+    """
+    mkdir -p function, makes folder recur
