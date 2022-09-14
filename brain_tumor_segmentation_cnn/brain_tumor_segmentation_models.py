@@ -43,4 +43,19 @@ __status__ = "Production"
 
 def mkdir_p(path):
     """
-    mkdir -p function, makes folder recur
+    mkdir -p function, makes folder recursively if required
+    :param path:
+    :return:
+    """
+    try:
+        makedirs(path)
+    except OSError as exc:  # Python >2.5
+        if exc.errno == EEXIST and isdir(path):
+            pass
+        else:
+            raise
+
+
+class Brain_tumor_segmentation_model(object):
+    """
+    A class for com
