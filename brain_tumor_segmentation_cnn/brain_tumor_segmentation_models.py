@@ -58,4 +58,12 @@ def mkdir_p(path):
 
 class Brain_tumor_segmentation_model(object):
     """
-    A class for com
+    A class for compiling/loading, fitting and saving various models,
+     viewing segmented images and analyzing results
+    """
+
+    def __init__(self, is_hgg=None, n_chan=4, loaded_model=False, model_name=None):
+        """
+
+        :param model_name: if loaded_model is True load the model name specified
+  
