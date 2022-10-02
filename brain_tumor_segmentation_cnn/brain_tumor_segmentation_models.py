@@ -71,4 +71,11 @@ class Brain_tumor_segmentation_model(object):
         :param loaded_model: True if loading a pre-existing model. defaults to False
         """
         self.n_chan = n_chan
-        self
+        self.loaded_model = loaded_model
+        self.is_hgg = is_hgg
+        self.model = None
+
+        if not self.loaded_model:
+            if self.is_hgg is None:
+                raise NameError('expected boolean True for HGG else False for LGG')
+            self.model_name = 
