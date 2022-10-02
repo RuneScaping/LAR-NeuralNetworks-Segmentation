@@ -78,4 +78,11 @@ class Brain_tumor_segmentation_model(object):
         if not self.loaded_model:
             if self.is_hgg is None:
                 raise NameError('expected boolean True for HGG else False for LGG')
-            self.model_name = 
+            self.model_name = None
+            if is_hgg:
+                self.model_name = 'HGG'
+            else:
+                self.model_name = 'LGG'
+            self._make_model()
+            self._compile_model()
+            print('model for {} ready and compiled, waiting for training'.format(self.model_name)
