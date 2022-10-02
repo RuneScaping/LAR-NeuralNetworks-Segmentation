@@ -85,4 +85,12 @@ class Brain_tumor_segmentation_model(object):
                 self.model_name = 'LGG'
             self._make_model()
             self._compile_model()
-            print('model for {} ready and compiled, waiting for training'.format(self.model_name)
+            print('model for {} ready and compiled, waiting for training'.format(self.model_name))
+        else:
+            if model_name is None:
+                model_to_load = str(raw_input('Which model should I load? '))
+            else:
+                model_to_load = model_name
+            self.model = self.load_model_weights(model_to_load)
+
+    def _make_mode
