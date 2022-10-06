@@ -93,4 +93,13 @@ class Brain_tumor_segmentation_model(object):
                 model_to_load = model_name
             self.model = self.load_model_weights(model_to_load)
 
-    def _make_mode
+    def _make_model(self):
+        if self.is_hgg:
+            dropout_rate = 0.1
+        else:
+            dropout_rate = 0.5
+        step = 0
+        print('******************************************', step)
+        step += 1
+        model_to_make = Sequential()
+        print('***************************
