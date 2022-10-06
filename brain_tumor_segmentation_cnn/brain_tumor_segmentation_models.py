@@ -102,4 +102,10 @@ class Brain_tumor_segmentation_model(object):
         print('******************************************', step)
         step += 1
         model_to_make = Sequential()
-        print('***************************
+        print('******************************************', step)
+        step += 1
+        model_to_make.add(Conv2D(64, (3, 3),
+                                 kernel_initializer=glorot_normal(),
+                                 bias_initializer='zeros',
+                                 padding='same',
+                               
