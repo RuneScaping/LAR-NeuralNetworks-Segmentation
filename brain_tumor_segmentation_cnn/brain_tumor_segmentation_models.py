@@ -108,4 +108,9 @@ class Brain_tumor_segmentation_model(object):
                                  kernel_initializer=glorot_normal(),
                                  bias_initializer='zeros',
                                  padding='same',
-                               
+                                 data_format='channels_first',
+                                 input_shape=(4, 33, 33)
+                                 ))
+        print(model_to_make.input_shape)
+        print(model_to_make.output)
+        print('************************************
