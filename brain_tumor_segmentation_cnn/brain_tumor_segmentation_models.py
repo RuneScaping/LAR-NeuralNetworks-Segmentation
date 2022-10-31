@@ -121,4 +121,10 @@ class Brain_tumor_segmentation_model(object):
         step += 1
         model_to_make.add(Conv2D(filters=64,
                                  kernel_size=(3, 3),
-                  
+                                 padding='same',
+                                 data_format='channels_first',
+                                 input_shape=(64, 33, 33)))
+        print(model_to_make.output)
+        print('******************************************', step)
+        step += 1
+        model_to_make.add(
