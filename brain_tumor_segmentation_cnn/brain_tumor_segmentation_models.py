@@ -127,4 +127,11 @@ class Brain_tumor_segmentation_model(object):
         print(model_to_make.output)
         print('******************************************', step)
         step += 1
-        model_to_make.add(
+        model_to_make.add(LeakyReLU(alpha=0.333))
+        print(model_to_make.output)
+        if self.is_hgg:
+            model_to_make.add(Conv2D(filters=64,
+                                     kernel_size=(3, 3),
+                                     padding='same',
+                                     data_format='channels_first',
+                
