@@ -134,4 +134,10 @@ class Brain_tumor_segmentation_model(object):
                                      kernel_size=(3, 3),
                                      padding='same',
                                      data_format='channels_first',
-                
+                                     input_shape=(64, 33, 33)))
+            print('******************************************', step)
+            step += 1
+            print(model_to_make.output)
+
+            model_to_make.add(LeakyReLU(alpha=0.333))
+            print('*****************************
