@@ -155,4 +155,10 @@ class Brain_tumor_segmentation_model(object):
         model_to_make.add(Conv2D(filters=128,
                                  kernel_size=(3, 3),
                                  padding='same',
-      
+                                 data_format='channels_first',
+                                 input_shape=(64, 16, 16)))
+        print('******************************************', step)
+        step += 1
+        print(model_to_make.output)
+
+        model_to_make.add(Leak
