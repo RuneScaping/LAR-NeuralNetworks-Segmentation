@@ -140,4 +140,11 @@ class Brain_tumor_segmentation_model(object):
             print(model_to_make.output)
 
             model_to_make.add(LeakyReLU(alpha=0.333))
-            print('*****************************
+            print('******************************************', step)
+            step += 1
+            print(model_to_make.output)
+
+        model_to_make.add(MaxPool2D(pool_size=(3, 3),
+                                    strides=(2, 2),
+                                    data_format='channels_first',
+                            
