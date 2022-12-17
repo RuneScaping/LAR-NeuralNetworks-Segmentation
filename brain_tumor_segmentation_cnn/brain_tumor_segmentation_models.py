@@ -161,4 +161,12 @@ class Brain_tumor_segmentation_model(object):
         step += 1
         print(model_to_make.output)
 
-        model_to_make.add(Leak
+        model_to_make.add(LeakyReLU(alpha=0.333))
+        print('******************************************', step)
+        step += 1
+        print(model_to_make.output)
+
+        model_to_make.add(Conv2D(filters=128,
+                                 kernel_size=(3, 3),
+                                 padding='same',
+       
