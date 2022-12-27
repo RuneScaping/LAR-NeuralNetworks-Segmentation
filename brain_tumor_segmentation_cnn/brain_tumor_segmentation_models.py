@@ -176,4 +176,9 @@ class Brain_tumor_segmentation_model(object):
         print(model_to_make.output)
 
         if self.is_hgg:
-         
+            model_to_make.add(Conv2D(filters=128,
+                                     kernel_size=(3, 3),
+                                     padding='same',
+                                     data_format='channels_first',
+                                     input_shape=(128, 16, 16)))
+            print('****************
