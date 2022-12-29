@@ -192,4 +192,11 @@ class Brain_tumor_segmentation_model(object):
                                     strides=(2, 2),
                                     data_format='channels_first',
                                     input_shape=(128, 16, 16)))
-        print('******************************************', 
+        print('******************************************', step)
+        step += 1
+        print(model_to_make.output)
+        print('******************************************', 'flattened')
+        model_to_make.add(Flatten())
+        print(model_to_make.output)
+        model_to_make.add(Dense(units=256, input_dim=6272))
+        print('*******
