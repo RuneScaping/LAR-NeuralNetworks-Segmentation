@@ -199,4 +199,11 @@ class Brain_tumor_segmentation_model(object):
         model_to_make.add(Flatten())
         print(model_to_make.output)
         model_to_make.add(Dense(units=256, input_dim=6272))
-        print('*******
+        print('******************************************', step)
+        step += 1
+        print(model_to_make.output)
+        model_to_make.add(LeakyReLU(alpha=0.333))
+        print('******************************************', step)
+        step += 1
+        print(model_to_make.output)
+        model_to_make.add(
