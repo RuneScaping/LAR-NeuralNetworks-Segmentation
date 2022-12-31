@@ -206,4 +206,11 @@ class Brain_tumor_segmentation_model(object):
         print('******************************************', step)
         step += 1
         print(model_to_make.output)
-        model_to_make.add(
+        model_to_make.add(Dropout(dropout_rate))
+        print('******************************************', step)
+        step += 1
+        print(model_to_make.output)
+        model_to_make.add(Dense(units=256, input_dim=256))
+        print('******************************************', step)
+        step += 1
+        pr
