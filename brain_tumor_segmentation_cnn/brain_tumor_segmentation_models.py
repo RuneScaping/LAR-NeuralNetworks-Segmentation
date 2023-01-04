@@ -220,4 +220,12 @@ class Brain_tumor_segmentation_model(object):
         print(model_to_make.output)
         model_to_make.add(Dropout(dropout_rate))
         print('******************************************', step)
-     
+        step += 1
+        print(model_to_make.output)
+        model_to_make.add(Dense(units=5,
+                                input_dim=256))
+        print('******************************************', step)
+        step += 1
+        print(model_to_make.output)
+        model_to_make.add(Activation('softmax'))
+        print('
