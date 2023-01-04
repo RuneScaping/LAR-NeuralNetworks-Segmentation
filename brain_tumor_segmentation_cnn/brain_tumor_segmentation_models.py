@@ -237,3 +237,15 @@ class Brain_tumor_segmentation_model(object):
         # default decay = 1e-6, lr = 0.01 maybe 1e-2 for linear decay?
         sgd = SGD(lr=3e-3,
                   decay=0,
+                  momentum=0.9,
+                  nesterov=True)
+        print(sgd)
+        self.model.compile(optimizer=sgd,
+                           loss='categorical_crossentropy',
+                           metrics=['accuracy'])
+
+    @staticmethod
+    def load_model_weights(model_name):
+        """
+
+    
