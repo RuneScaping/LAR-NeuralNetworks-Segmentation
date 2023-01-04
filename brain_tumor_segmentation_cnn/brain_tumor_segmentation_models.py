@@ -228,4 +228,12 @@ class Brain_tumor_segmentation_model(object):
         step += 1
         print(model_to_make.output)
         model_to_make.add(Activation('softmax'))
-        print('
+        print('******************************************', step)
+        step += 1
+        print(model_to_make.output)
+        self.model = model_to_make
+
+    def _compile_model(self):
+        # default decay = 1e-6, lr = 0.01 maybe 1e-2 for linear decay?
+        sgd = SGD(lr=3e-3,
+                  decay=0,
