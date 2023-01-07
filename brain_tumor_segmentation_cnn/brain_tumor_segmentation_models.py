@@ -248,4 +248,8 @@ class Brain_tumor_segmentation_model(object):
     def load_model_weights(model_name):
         """
 
-    
+        :param model_name: filepath to model and weights, not including extension
+        :return: Model with loaded weights. can fit on model using loaded_model=True in fit_model method
+        """
+        print('Loading model {}'.format(model_name))
+        model_to_load = '
