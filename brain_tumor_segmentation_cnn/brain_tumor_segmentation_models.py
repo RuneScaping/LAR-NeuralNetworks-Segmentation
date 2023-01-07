@@ -270,4 +270,13 @@ class Brain_tumor_segmentation_model(object):
         """
 
         print(X_train.shape)
-        pri
+        print('*' * 100)
+        print(y_train.shape)
+        print('*' * 100)
+        Y_train = np_utils.to_categorical(y_train, 5)
+
+        shuffle = zip(X_train, Y_train)
+        np.random.shuffle(shuffle)
+
+        X_train = np.array([shuffle[i][0] for i in xrange(len(shuffle))])
+        Y_t
