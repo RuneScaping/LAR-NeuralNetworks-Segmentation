@@ -252,4 +252,13 @@ class Brain_tumor_segmentation_model(object):
         :return: Model with loaded weights. can fit on model using loaded_model=True in fit_model method
         """
         print('Loading model {}'.format(model_name))
-        model_to_load = '
+        model_to_load = '{}.json'.format(model_name)
+        weights = '{}.hdf5'.format(model_name)
+        with open(model_to_load) as f:
+            m = f.next()
+        model_comp = model_from_json(json.loads(m))
+        model_comp.load_weights(weights)
+        print('Done.')
+        return model_comp
+
+    def fit_model(sel
