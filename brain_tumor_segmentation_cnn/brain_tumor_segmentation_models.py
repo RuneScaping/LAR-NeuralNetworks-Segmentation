@@ -261,4 +261,13 @@ class Brain_tumor_segmentation_model(object):
         print('Done.')
         return model_comp
 
-    def fit_model(sel
+    def fit_model(self, X_train, y_train):
+        """
+
+        :param X_train: list of patches to train on in form (n_sample, n_channel, h, w)
+        :param y_train: list of labels corresponding to X_train patches in form (n_sample,)
+        :return: Fits specified model
+        """
+
+        print(X_train.shape)
+        pri
