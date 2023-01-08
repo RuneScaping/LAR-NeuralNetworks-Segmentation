@@ -287,4 +287,13 @@ class Brain_tumor_segmentation_model(object):
         else:
             n_epochs = 25
 
-        self.model.fit(X_train, Y_train, epochs=n_epochs, batch_size=128, verb
+        self.model.fit(X_train, Y_train, epochs=n_epochs, batch_size=128, verbose=1)
+
+    def save_model(self, model_name):
+        """
+        Saves current model as json and weigts as h5df file
+        :param model_name: name to save model and weigths under, including filepath but not extension
+        :return:
+        """
+        model_to_save = '{}.json'.format(model_name)
+     
