@@ -279,4 +279,12 @@ class Brain_tumor_segmentation_model(object):
         np.random.shuffle(shuffle)
 
         X_train = np.array([shuffle[i][0] for i in xrange(len(shuffle))])
-        Y_t
+        Y_train = np.array([shuffle[i][1] for i in xrange(len(shuffle))])
+        EarlyStopping(monitor='val_loss', patience=2, mode='auto')
+
+        if self.is_hgg:
+            n_epochs = 20
+        else:
+            n_epochs = 25
+
+        self.model.fit(X_train, Y_train, epochs=n_epochs, batch_size=128, verb
