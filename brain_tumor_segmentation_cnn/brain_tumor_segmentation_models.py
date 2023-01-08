@@ -305,4 +305,11 @@ class Brain_tumor_segmentation_model(object):
             self.model.save_weights(weights)
 
         with open(model_to_save, 'w') as f:
-        
+            json.dump(json_string, f)
+
+    def class_report(self, X_test, y_test):
+        """
+        returns skilearns test report (precision, recall, f1-score)
+        :param X_test:  test data of 4x33x33 patches
+        :param y_test: labels for X_test
+        :return: confusion
