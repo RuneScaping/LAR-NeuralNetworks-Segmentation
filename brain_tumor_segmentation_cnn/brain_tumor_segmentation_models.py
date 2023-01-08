@@ -296,4 +296,13 @@ class Brain_tumor_segmentation_model(object):
         :return:
         """
         model_to_save = '{}.json'.format(model_name)
-     
+        weights = '{}.hdf5'.format(model_name)
+        json_string = self.model.to_json()
+        try:
+            self.model.save_weights(weights)
+        except:
+            mkdir_p(model_name)
+            self.model.save_weights(weights)
+
+        with open(model_to_save, 'w') as f:
+        
