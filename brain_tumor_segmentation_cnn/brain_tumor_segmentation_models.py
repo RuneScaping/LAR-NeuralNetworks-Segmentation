@@ -312,4 +312,12 @@ class Brain_tumor_segmentation_model(object):
         returns skilearns test report (precision, recall, f1-score)
         :param X_test:  test data of 4x33x33 patches
         :param y_test: labels for X_test
-        :return: confusion
+        :return: confusion matrix of precision, recall and f1 score
+        """
+        y_pred = self.model.predict_class(X_test)
+        print(classification_report(y_pred, y_test))
+
+    def predict_image(self, test_img):
+        """
+        predicts classes of input image
+        :param test_img: filepath to image to predic
