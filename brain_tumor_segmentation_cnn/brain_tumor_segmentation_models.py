@@ -320,4 +320,13 @@ class Brain_tumor_segmentation_model(object):
     def predict_image(self, test_img):
         """
         predicts classes of input image
-        :param test_img: filepath to image to predic
+        :param test_img: filepath to image to predict on
+        :return: segmented result
+        """
+        # imgs = io.imread(test_img).astype('float').reshape(5, 216, 160)
+        imgs = mpimg.imread(test_img).astype('float')
+        imgs = rgb2gray(imgs).reshape(5, 216, 160)
+
+        plist = []
+
+        # create patches_to_predict 
