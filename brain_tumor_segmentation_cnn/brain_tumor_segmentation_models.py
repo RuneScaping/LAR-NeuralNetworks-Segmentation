@@ -329,4 +329,11 @@ class Brain_tumor_segmentation_model(object):
 
         plist = []
 
-        # create patches_to_predict 
+        # create patches_to_predict from an entire slice
+        for img in imgs[:-1]:
+            if np.max(img) != 0:
+                img /= np.max(img)
+            p = extract_patches_2d(img, (33, 33))
+            plist.append(p)
+        patches_to_predict = np.array(
+            zip(np.array(plist[0]
