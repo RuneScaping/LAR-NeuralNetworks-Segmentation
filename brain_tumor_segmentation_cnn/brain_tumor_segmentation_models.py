@@ -336,4 +336,11 @@ class Brain_tumor_segmentation_model(object):
             p = extract_patches_2d(img, (33, 33))
             plist.append(p)
         patches_to_predict = np.array(
-            zip(np.array(plist[0]
+            zip(np.array(plist[0]), np.array(plist[1]), np.array(plist[2]), np.array(plist[3])))
+
+        # predict classes of each pixel based on model
+        full_pred = self.model.predict_classes(patches_to_predict)
+        fp1 = full_pred.reshape(184, 128)
+        return fp1
+
+    def save_segmented_im
