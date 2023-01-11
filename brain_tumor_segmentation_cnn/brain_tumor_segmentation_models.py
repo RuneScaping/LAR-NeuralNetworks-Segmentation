@@ -343,4 +343,9 @@ class Brain_tumor_segmentation_model(object):
         fp1 = full_pred.reshape(184, 128)
         return fp1
 
-    def save_segmented_im
+    def save_segmented_image(self, index, test_img, save=False):
+        """
+        Creates an image of original brain with segmentation overlay
+        :param index: index of image to save
+        :param test_img: filepath to test image for segmentation, including file extension
+        :param save: If true, shows output i
