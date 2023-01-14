@@ -348,4 +348,12 @@ class Brain_tumor_segmentation_model(object):
         Creates an image of original brain with segmentation overlay
         :param index: index of image to save
         :param test_img: filepath to test image for segmentation, including file extension
-        :param save: If true, shows output i
+        :param save: If true, shows output image. (defaults to False)
+        :return: if show is True, shows image of segmentation results
+                 if show is false, returns segmented image.
+        """
+
+        segmentation = self.predict_image(test_img)
+
+        img_mask = np.pad(segmentation, (16, 16), mode='edge')
+        ones = np.argwhe
