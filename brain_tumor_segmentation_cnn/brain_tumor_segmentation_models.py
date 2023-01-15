@@ -356,4 +356,10 @@ class Brain_tumor_segmentation_model(object):
         segmentation = self.predict_image(test_img)
 
         img_mask = np.pad(segmentation, (16, 16), mode='edge')
-        ones = np.argwhe
+        ones = np.argwhere(img_mask == 1)
+        twos = np.argwhere(img_mask == 2)
+        threes = np.argwhere(img_mask == 3)
+        fours = np.argwhere(img_mask == 4)
+
+        test_im = mpimg.imread(test_img).astype('float')
+        test_back = rgb2gray(test_im).reshape(5, 216, 160)
