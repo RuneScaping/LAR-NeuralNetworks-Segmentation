@@ -362,4 +362,12 @@ class Brain_tumor_segmentation_model(object):
         fours = np.argwhere(img_mask == 4)
 
         test_im = mpimg.imread(test_img).astype('float')
-        test_back = rgb2gray(test_im).reshape(5, 216, 160)
+        test_back = rgb2gray(test_im).reshape(5, 216, 160)[-2]
+        # overlay = mark_boundaries(test_back, img_mask)
+        gray_img = img_as_float(test_back)
+
+        # adjust gamma of image
+        image = adjust_gamma(color.gray2rgb(gray_img), 0.65)
+        sliced_image = image.copy()
+        red_multiplier = [1, 0.2, 0.2]
+        yellow_multi
