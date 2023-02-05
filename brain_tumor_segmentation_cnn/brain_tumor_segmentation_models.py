@@ -370,4 +370,12 @@ class Brain_tumor_segmentation_model(object):
         image = adjust_gamma(color.gray2rgb(gray_img), 0.65)
         sliced_image = image.copy()
         red_multiplier = [1, 0.2, 0.2]
-        yellow_multi
+        yellow_multiplier = [1, 1, 0.25]
+        green_multiplier = [0.35, 0.75, 0.25]
+        blue_multiplier = [0, 0.25, 0.9]
+
+        # change colors of segmented classes
+        for i in xrange(len(ones)):
+            sliced_image[ones[i][0]][ones[i][1]] = red_multiplier
+        for i in xrange(len(twos)):
+ 
