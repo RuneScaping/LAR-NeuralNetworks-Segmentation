@@ -384,4 +384,12 @@ class Brain_tumor_segmentation_model(object):
         for i in xrange(len(fours)):
             sliced_image[fours[i][0]][fours[i][1]] = yellow_multiplier
 
-       
+        if save:
+
+            try:
+                mkdir_p('./results/')
+                io.imsave('./results/result' + '_' + str(index) + '.png', sliced_image)
+            except:
+                io.imsave('./results/result' + '_' + str(index) + '.png', sliced_image)
+        else:
+            retur
