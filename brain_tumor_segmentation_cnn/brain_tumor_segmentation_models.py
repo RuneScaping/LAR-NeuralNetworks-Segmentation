@@ -392,4 +392,12 @@ class Brain_tumor_segmentation_model(object):
             except:
                 io.imsave('./results/result' + '_' + str(index) + '.png', sliced_image)
         else:
-            retur
+            return sliced_image
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Commands to istanciate or load the convolutional neural network')
+    parser.add_argument('-train',
+                        '-t',
+                        action='store',
+                        default=100
