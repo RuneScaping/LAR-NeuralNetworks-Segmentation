@@ -406,4 +406,9 @@ if __name__ == '__main__':
                         help='set the number of data to train with,\n default=1000')
     parser.add_argument('-augmentation',
                         '-a',
-                     
+                        action='store',
+                        default=0,
+                        dest='angle',
+                        type=int,
+                        help='set data augmentation option through rotating angle\n'
+                             'express values in degre
