@@ -418,4 +418,12 @@ if __name__ == '__main__':
                         default=True,
                         dest='hgg',
                         type=bool,
-                        help='set to use model for hgg(True) or lgg(
+                        help='set to use model for hgg(True) or lgg(False), default=True')
+    parser.add_argument('-load',
+                        '-l',
+                        action='store',
+                        dest='model_to_load',
+                        default=0,
+                        type=str,
+                        help='load the model already trained,\n'
+            
