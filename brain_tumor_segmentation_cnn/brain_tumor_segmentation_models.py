@@ -411,4 +411,11 @@ if __name__ == '__main__':
                         dest='angle',
                         type=int,
                         help='set data augmentation option through rotating angle\n'
-                             'express values in degre
+                             'express values in degrees, default=0')
+    parser.add_argument('-modality',
+                        '-m',
+                        action='store',
+                        default=True,
+                        dest='hgg',
+                        type=bool,
+                        help='set to use model for hgg(True) or lgg(
