@@ -433,4 +433,10 @@ if __name__ == '__main__':
                         '-s',
                         action='store_true',
                         dest='save',
-                     
+                        default=False,
+                        help='save the trained model in the specified path,\n'
+                             'default no save happen')
+    parser.add_argument('-test',
+                        action='store_true',
+                        dest='test',
+                        default
