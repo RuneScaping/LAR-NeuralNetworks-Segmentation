@@ -426,4 +426,11 @@ if __name__ == '__main__':
                         default=0,
                         type=str,
                         help='load the model already trained,\n'
-            
+                             'default no load happen,\n'
+                             'model name as:\n'
+                             'model_name')
+    parser.add_argument('-save',
+                        '-s',
+                        action='store_true',
+                        dest='save',
+                     
