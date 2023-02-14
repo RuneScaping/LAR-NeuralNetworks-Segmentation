@@ -439,4 +439,12 @@ if __name__ == '__main__':
     parser.add_argument('-test',
                         action='store_true',
                         dest='test',
-                        default
+                        default=False,
+                        help='execute test')
+    result = parser.parse_args()
+
+    train_data = glob('Training_PNG/**')
+    print(str(len(train_data)) + ' images loaded')
+
+    if type(result.model_to_load) is int:
+        patches = PatchLibrary((33, 33), train_data, r
