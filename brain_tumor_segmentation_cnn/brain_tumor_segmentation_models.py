@@ -447,4 +447,11 @@ if __name__ == '__main__':
     print(str(len(train_data)) + ' images loaded')
 
     if type(result.model_to_load) is int:
-        patches = PatchLibrary((33, 33), train_data, r
+        patches = PatchLibrary((33, 33), train_data, result.training_datas, result.angle)
+        X, y = patches.make_training_patches()
+        model = Brain_tumor_segmentation_model(is_hgg=result.hgg)
+        model.fit_model(X, y)
+    else:
+        model = Brain_tumor_segmentation_model(loaded_model=True, model_name='./models/' + result.model_to_load)
+
+    i
