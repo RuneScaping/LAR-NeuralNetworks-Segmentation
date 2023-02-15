@@ -454,4 +454,13 @@ if __name__ == '__main__':
     else:
         model = Brain_tumor_segmentation_model(loaded_model=True, model_name='./models/' + result.model_to_load)
 
-    i
+    if result.save:
+        if result.angle is not 0:
+            angle = '_augmented_' + str(result.angle) + '_'
+        else:
+            angle = '_not_augmented_'
+        if result.hgg:
+            name = 'hgg'
+        else:
+            name = 'lgg'
+        model.save_model('models/' + name + 
