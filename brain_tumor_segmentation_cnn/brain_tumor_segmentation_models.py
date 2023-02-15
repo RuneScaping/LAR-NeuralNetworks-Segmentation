@@ -463,4 +463,10 @@ if __name__ == '__main__':
             name = 'hgg'
         else:
             name = 'lgg'
-        model.save_model('models/' + name + 
+        model.save_model('models/' + name + '_' + str(result.training_datas) + angle + 'result_cnn')
+
+    if result.test:
+        tests = glob('test_data/**')
+        segmented_images = []
+        for index, slice_img in enumerate(tests):
+            segmented_images.append(model.save_segmented_image(index, test_img=slice_img, save=True))
