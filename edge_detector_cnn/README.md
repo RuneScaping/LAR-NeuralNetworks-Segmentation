@@ -15,4 +15,15 @@ Each patch is processed through the model:
 | Relu| 32x3x3 | 32x3x3 |
 |Fully Connected|288|2|
 
-At the en
+At the end of the model is used The SoftMax activation function.
+
+After the CNN edge evaluation, is possible to apply more the Canny filter to the image.
+
+
+
+As for the previous cnn the workflow is the following 
+
+<img src="readme/Edge Detector Pipeline.png">
+
+## Results 
+The images filtered after 17000 patches augmented rotating
