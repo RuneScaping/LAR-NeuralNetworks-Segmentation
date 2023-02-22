@@ -26,4 +26,12 @@ As for the previous cnn the workflow is the following
 <img src="readme/Edge Detector Pipeline.png">
 
 ## Results 
-The images filtered after 17000 patches augmented rotating
+The images filtered after 17000 patches augmented rotating each patch of 90 degrees around the center, 3 times gives the following results:
+
+<img src="readme/result_edge_14.png" width="100">
+
+<img src="readme/result_edge_21.png" width="100">
+
+<img src="readme/result_edge_14.png" width="100">
+
+Applyng then the canny filter as post processing I've got the following re
