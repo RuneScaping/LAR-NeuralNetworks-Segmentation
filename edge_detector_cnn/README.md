@@ -47,4 +47,11 @@ Applyng then the canny filter as post processing I've got the following result:
 
 ### Ho to run Cnn
 
-	user path/to/package $	python edge_detector_cnn.py  -optio
+	user path/to/package $	python edge_detector_cnn.py  -option expected_value
+
+
+### All available Options
+	
+	-train','-t',		set the number of data to train with default=1000 (int value expected)
+                        
+	-augmentation','-a',		set data augmentation option through rotating angle express values in degrees, as default no augmen
