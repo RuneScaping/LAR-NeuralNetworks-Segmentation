@@ -54,4 +54,8 @@ Applyng then the canny filter as post processing I've got the following result:
 	
 	-train','-t',		set the number of data to train with default=1000 (int value expected)
                         
-	-augmentation','-a',		set data augmentation option through rotating angle express values in degrees, as default no augmen
+	-augmentation','-a',		set data augmentation option through rotating angle express values in degrees, as default no augmentation is made (int value expected)
+	
+	'-modality','-m',		set to use model for hgg(True) or lgg(False), default=True (boolean value expected)
+                        
+	'-load','-l',		load the model already trained, as default no load happen. insert model name as: 'model_name' (s
