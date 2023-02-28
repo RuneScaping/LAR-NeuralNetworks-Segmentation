@@ -58,4 +58,11 @@ Applyng then the canny filter as post processing I've got the following result:
 	
 	'-modality','-m',		set to use model for hgg(True) or lgg(False), default=True (boolean value expected)
                         
-	'-load','-l',		load the model already trained, as default no load happen. insert model name as: 'model_name' (s
+	'-load','-l',		load the model already trained, as default no load happen. insert model name as: 'model_name' (string value expected)
+	
+                              	
+    '-sigma', 	set the sigma value to apply'
+                              		' for the canny edge extractor in the
+                              		patch extraction,\n default=1.0 
+	
+	'-save', '-s',	save the trained model in the specified path, a
