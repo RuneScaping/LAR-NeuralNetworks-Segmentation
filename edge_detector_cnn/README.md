@@ -65,4 +65,8 @@ Applyng then the canny filter as post processing I've got the following result:
                               		' for the canny edge extractor in the
                               		patch extraction,\n default=1.0 
 	
-	'-save', '-s',	save the trained model in the specified path, a
+	'-save', '-s',	save the trained model in the specified path, as  default no save happen( the name and all it's specification happens automatically) (no value expected)
+	
+	-augmentation','-a',	set data augmentation option through the specified rotating angle express values in degrees, default=0'
+                             
+	'-canny','-c',	add canny filter to seg
