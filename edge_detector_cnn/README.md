@@ -69,4 +69,6 @@ Applyng then the canny filter as post processing I've got the following result:
 	
 	-augmentation','-a',	set data augmentation option through the specified rotating angle express values in degrees, default=0'
                              
-	'-canny','-c',	add canny filter to seg
+	'-canny','-c',	add canny filter to segmented image ( concatenate '-test' option before using it)
+	'-both','-b',		 save both canny filter to segmented image  and segmented image (use -test option before using it)
+	'-test',	execute test and saves results in 'results' folders
