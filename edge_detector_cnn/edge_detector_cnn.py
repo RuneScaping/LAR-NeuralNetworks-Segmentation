@@ -351,3 +351,50 @@ if __name__ == '__main__':
                          help='set data augmentation option through the specified rotating angle\n'
                               'express values in degrees, default=0' )
     parser.add_argument( '-canny',
+                         '-c',
+                         action='store_true',
+                         dest='both',
+                         default=False,
+                         help=' add canny filter to segmented image (use -test option before using it)' )
+    parser.add_argument( '-both',
+                         '-b',
+                         action='store_true',
+                         dest='canny_filter',
+                         default=False,
+                         help=' save both canny filter to segmented image and'
+                              ' segmented image (use -test option before using it(no -c is required)' )
+    parser.add_argument( '-test',
+                         action='store_true',
+                         dest='test',
+                         default=False,
+                         help='execute test' )
+    result = parser.parse_args()
+
+    train_data = glob( './Training_PNG/**.png' )
+    print( str( len( train_data ) ) + ' images to load' )
+
+    if type( result.model_to_load ) is int:
+        patches = patch_extractor_edges.PatchExtractor( num_samples=result.training_datas,
+                                                        path_to_images=train_data,
+                                                        sigma=result.sigma,
+                                                        augmentation_angle=result.angle )
+        X, y = patches.make_training_patches()
+        model = Edge_detector_cnn()
+        model.fit_model( X, y )
+    else:
+        model = Edge_detector_cnn( loaded_model=True, model_name='./models/' + result.model_to_load )
+
+    if result.save:
+        if result.angle is not 0:
+            angle = '_augmented_{}_'.format( result.angle )
+        else:
+            angle = '_not_augmented_'
+
+        model.save_model( 'models/{}_{}result_edge_detector_cnn'.format( result.training_datas, angle ) )
+
+    if result.test:
+        tests = glob( 'test_data/**' )
+        segmented_images = []
+        for index, slice in enumerate( tests ):
+            segmented_images.append(
+                model.show_segmented_image( index, slice, both=result.both, canny_use=result.canny_filter, save=True ) )
