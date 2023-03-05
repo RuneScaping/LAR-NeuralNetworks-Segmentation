@@ -272,3 +272,65 @@ class PatchExtractor( object ):
                             except:
                                 print( 'problem occurred in save for class {}'.format( class_number ) )
                                 exit( 0 )
+
+                            print( '*---> patch {}/{} added and saved '.format( i, per_class ) )
+                            extracted = True
+                    counter += 1
+
+        if self.augmentation_angle != 0:
+            print( "\n *_*_*_*_* proceeding  with data augmentation for class {}  *_*_*_*_* \n".format( class_number ) )
+
+            if isdir( './patches/sigma_{}/class_{}/rotations'.format( self.sigma,
+                                                                      class_number ) ):
+                print( "rotations folder present " )
+            else:
+                mkdir_p( './patches/sigma_{}/class_{}/rotations'.format( self.sigma,
+                                                                         class_number ) )
+                print( "rotations folder created" )
+            for el_index in xrange( len( patches ) ):
+                for j in range( 1, self.augmentation_multiplier ):
+                    try:
+                        patch_rotated = np.array( rgb2gray( imread(
+                            ('./patches/sigma_{}/class_{}/'
+                             'rotations/{}_{}.png'.format( self.sigma,
+                                                           class_number,
+                                                           el_index,
+                                                           self.augmentation_angle * j )) ) ).reshape( 3,
+                                                                                                       self.patch_size[
+                                                                                                           0],
+                                                                                                       self.patch_size[
+                                                                                                           1]
+                                                                                                       ) ).astype(
+                            float ) / (
+                                            256 * 256)
+                        patches.append( patch_rotated )
+                        print( '*---> patch {}/{} loaded and added '
+                               'with rotation of {} degrees'.format( el_index, per_class,
+                                                                     self.augmentation_angle * j ) )
+                    except:
+                        final_rotated_patch = rotate_patches( patches[el_index][0],
+                                                              patches[el_index][1],
+                                                              patches[el_index][2],
+                                                              self.augmentation_angle * j )
+                        patches.append( final_rotated_patch )
+                        imsave( './patches/sigma_{}/class_{}/'
+                                'rotations/{}_{}.png'.format( self.sigma,
+                                                              class_number,
+                                                              el_index,
+                                                              self.augmentation_angle * j ),
+                                final_rotated_patch.reshape( 3 * self.patch_size[0], self.patch_size[1] ),
+                                dtype=float )
+                        print( ('*---> patch {}/{} saved and added '
+                                'with rotation of {} degrees '.format( el_index, per_class,
+                                                                       self.augmentation_angle * j )) )
+            print()
+            print( 'augmentation done \n' )
+        print( 'extraction for class {} complete\n'.format( class_number ) )
+        return np.array( patches ), labels
+
+
+if __name__ == '__main__':
+    # path_images = glob( '/Users/Cesare/Desktop/lavoro/cnn_med3d/images/Training_PNG/**' )
+    # prova = PatchExtractor( 40, sigma=.6, path_to_images=path_images )
+    # patches, labels = prova.make_training_patches()
+    pass
