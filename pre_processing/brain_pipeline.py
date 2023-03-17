@@ -31,4 +31,17 @@ def mkdir_p(path):
         if exc.errno == EEXIST and isdir(path):
             pass
         else:
-      
+            raise
+
+
+def normalize(slice_el):
+    """
+
+    :param slice_el: image to normalize removing 1% from top and bottom
+     of histogram (intensity removal)
+    :return: normalized slice
+    """
+
+    b = np.percentile(slice_el, 1)
+    t = np.percentile(slice_el, 99)
+    slice_el 
