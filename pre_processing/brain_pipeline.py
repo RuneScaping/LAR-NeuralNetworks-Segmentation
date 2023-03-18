@@ -44,4 +44,16 @@ def normalize(slice_el):
 
     b = np.percentile(slice_el, 1)
     t = np.percentile(slice_el, 99)
-    slice_el 
+    slice_el = np.clip(slice_el, b, t)
+    if np.std(slice_el) == 0:
+        return slice_el
+    else:
+        return (slice_el - np.mean(slice_el)) / np.std(slice_el)
+
+
+class BrainPipeline(object):
+    """
+    A class for processing brain scans for one patient
+    """
+
+    def __init__(self, path, n4itk=False, n4itk_a
