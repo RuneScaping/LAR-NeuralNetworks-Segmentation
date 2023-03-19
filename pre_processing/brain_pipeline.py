@@ -56,4 +56,10 @@ class BrainPipeline(object):
     A class for processing brain scans for one patient
     """
 
-    def __init__(self, path, n4itk=False, n4itk_a
+    def __init__(self, path, n4itk=False, n4itk_apply=False):
+        """
+
+        :param path: path to directory of one patient. Contains following mha files:
+        flair, t1, t1c, t2, ground truth (gt)
+        :param n4itk:  True to use n4itk normed t1 scans (defaults to True)
+        :param n4itk_apply: True to appl
