@@ -62,4 +62,11 @@ class BrainPipeline(object):
         :param path: path to directory of one patient. Contains following mha files:
         flair, t1, t1c, t2, ground truth (gt)
         :param n4itk:  True to use n4itk normed t1 scans (defaults to True)
-        :param n4itk_apply: True to appl
+        :param n4itk_apply: True to apply and save n4itk filter to t1 and t1c scans for given patient.
+        """
+        self.path = path
+        self.n4itk = n4itk
+        self.n4itk_apply = n4itk_apply
+        self.modes = ['flair', 't1', 't1c', 't2', 'gt']
+        # slices=[[flair x 155], [t1], [t1c], [t2], [gt]], 155 per modality
+    
