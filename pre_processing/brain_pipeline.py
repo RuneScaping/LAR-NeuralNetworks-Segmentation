@@ -83,3 +83,9 @@ class BrainPipeline(object):
         slices_by_mode = np.zeros((5, 176, 216, 160))
         slices_by_slice = np.zeros((176, 5, 216, 160))
         flair = glob(self.path + '/*Flair*/*.mha')
+        t2 = glob(self.path + '/*_T2*/*.mha')
+        gt = glob(self.path + '/*more*/*.mha')
+        t1s = glob(self.path + '/**/*T1*.mha')
+        t1_n4 = glob(self.path + '/*T1*/*_n.mha')
+        t1 = [scan for scan in t1s if scan not in t1_n4]
+        scans = [flair[0], t1[0], t1[1],
