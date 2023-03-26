@@ -69,4 +69,11 @@ class BrainPipeline(object):
         self.n4itk_apply = n4itk_apply
         self.modes = ['flair', 't1', 't1c', 't2', 'gt']
         # slices=[[flair x 155], [t1], [t1c], [t2], [gt]], 155 per modality
-    
+        self.slices_by_mode, n = self.read_scans()
+        # [ [slice1 x 5], [slice2 x 5], ..., [slice155 x 5]]
+        self.slices_by_slice = n
+        self.normed_slices = self.norm_slices()
+
+    def read_scans(self):
+        """
+        goes into each modality in patient directory and loads indiv
