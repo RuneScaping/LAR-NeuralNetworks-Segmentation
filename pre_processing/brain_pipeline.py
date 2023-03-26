@@ -76,4 +76,10 @@ class BrainPipeline(object):
 
     def read_scans(self):
         """
-        goes into each modality in patient directory and loads indiv
+        goes into each modality in patient directory and loads individual scans.
+        transforms scans of same slice into strip of 5 images
+        """
+        print('Loading scans...')
+        slices_by_mode = np.zeros((5, 176, 216, 160))
+        slices_by_slice = np.zeros((176, 5, 216, 160))
+        flair = glob(self.path + '/*Flair*/*.mha')
