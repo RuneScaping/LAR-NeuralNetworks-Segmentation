@@ -100,4 +100,10 @@ class BrainPipeline(object):
             # read each image directory, save to self.slices
             print(io.imread(scans[scan_idx], plugin='simpleitk').astype(float).shape)
             print(scans[scan_idx])
-            print('*' * 1
+            print('*' * 100)
+            try:
+                slices_by_mode[scan_idx] = io.imread(scans[scan_idx], plugin='simpleitk').astype(float)
+            except:
+                continue
+        for mode_ix in xrange(slices_by_mode.shape[0]):  # modes 1 thru 5
+            for slice_ix in xrange(s
