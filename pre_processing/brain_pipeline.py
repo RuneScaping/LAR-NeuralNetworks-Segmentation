@@ -95,4 +95,9 @@ class BrainPipeline(object):
                 self.n4itk_norm(t1_path)  # normalize files
             scans = [flair[0], t1_n4[0], t1_n4[1], t2[0], gt[0]]
         elif self.n4itk:
-            s
+            scans = [flair[0], t1_n4[0], t1_n4[1], t2[0], gt[0]]
+        for scan_idx in xrange(5):
+            # read each image directory, save to self.slices
+            print(io.imread(scans[scan_idx], plugin='simpleitk').astype(float).shape)
+            print(scans[scan_idx])
+            print('*' * 1
