@@ -88,4 +88,11 @@ class BrainPipeline(object):
         t1s = glob(self.path + '/**/*T1*.mha')
         t1_n4 = glob(self.path + '/*T1*/*_n.mha')
         t1 = [scan for scan in t1s if scan not in t1_n4]
-        scans = [flair[0], t1[0], t1[1],
+        scans = [flair[0], t1[0], t1[1], t2[0], gt[0]]  # directories to each image (5 total)
+        if self.n4itk_apply:
+            print('-> Applyling bias correction...')
+            for t1_path in t1:
+                self.n4itk_norm(t1_path)  # normalize files
+            scans = [flair[0], t1_n4[0], t1_n4[1], t2[0], gt[0]]
+        elif self.n4itk:
+            s
