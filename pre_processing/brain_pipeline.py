@@ -106,4 +106,10 @@ class BrainPipeline(object):
             except:
                 continue
         for mode_ix in xrange(slices_by_mode.shape[0]):  # modes 1 thru 5
-            for slice_ix in xrange(s
+            for slice_ix in xrange(slices_by_mode.shape[1]):  # slices 1 thru 155
+                slices_by_slice[slice_ix][mode_ix] = slices_by_mode[mode_ix][slice_ix]  # reshape by slice
+        return slices_by_mode, slices_by_slice
+
+    def norm_slices(self):
+        """
+        normalizes each slice in self.slices_by_slice, e
