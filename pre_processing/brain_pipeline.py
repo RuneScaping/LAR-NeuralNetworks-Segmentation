@@ -118,4 +118,8 @@ class BrainPipeline(object):
         if n4itk == True, will apply n4itk bias correction to T1 and T1c images
         """
         print('Normalizing slices...')
-        nor
+        normed_slices = np.zeros((176, 5, 216, 160))
+        for slice_ix in xrange(176):
+            normed_slices[slice_ix][-1] = self.slices_by_slice[slice_ix][-1]
+            for mode_ix in xrange(4):
+                normed_slices[slice_ix][mode_ix] = normalize(self.slices_by_
