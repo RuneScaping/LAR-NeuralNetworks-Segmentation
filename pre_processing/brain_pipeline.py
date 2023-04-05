@@ -112,4 +112,10 @@ class BrainPipeline(object):
 
     def norm_slices(self):
         """
-        normalizes each slice in self.slices_by_slice, e
+        normalizes each slice in self.slices_by_slice, excluding gt
+        subtracts mean and div by std dev for each slice
+        clips top and bottom one percent of pixel intensities
+        if n4itk == True, will apply n4itk bias correction to T1 and T1c images
+        """
+        print('Normalizing slices...')
+        nor
