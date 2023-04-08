@@ -122,4 +122,11 @@ class BrainPipeline(object):
         for slice_ix in xrange(176):
             normed_slices[slice_ix][-1] = self.slices_by_slice[slice_ix][-1]
             for mode_ix in xrange(4):
-                normed_slices[slice_ix][mode_ix] = normalize(self.slices_by_
+                normed_slices[slice_ix][mode_ix] = normalize(self.slices_by_slice[slice_ix][mode_ix])
+        print ('Done.')
+        return normed_slices
+
+    def save_patient(self, reg_norm_n4, patient_num):
+        """
+        saves png in Norm_PNG directory for normed, Training_PNG for reg
+        :param reg_norm_n4:  'reg' for original images, 'norm' normalized
