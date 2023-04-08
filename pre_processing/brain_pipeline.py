@@ -129,4 +129,11 @@ class BrainPipeline(object):
     def save_patient(self, reg_norm_n4, patient_num):
         """
         saves png in Norm_PNG directory for normed, Training_PNG for reg
-        :param reg_norm_n4:  'reg' for original images, 'norm' normalized
+        :param reg_norm_n4:  'reg' for original images, 'norm' normalized images,
+         'n4' for n4 normalized images
+        :param patient_num: unique identifier for each patient
+        :return:
+        """
+        print('Saving scans for patient {}...'.format(patient_num))
+        progress.currval = 0
+        if reg_norm_n4 == 'no
