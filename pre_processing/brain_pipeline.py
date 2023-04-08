@@ -136,4 +136,9 @@ class BrainPipeline(object):
         """
         print('Saving scans for patient {}...'.format(patient_num))
         progress.currval = 0
-        if reg_norm_n4 == 'no
+        if reg_norm_n4 == 'norm':  # saved normed slices
+            for slice_ix in progress(xrange(176)):  # reshape to strip
+                strip = self.normed_slices[slice_ix].reshape(1080, 160)
+                if np.max(strip) != 0:  # set values < 1
+                    strip /= np.max(strip)
+                if n
