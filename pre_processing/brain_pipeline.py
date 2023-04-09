@@ -141,4 +141,10 @@ class BrainPipeline(object):
                 strip = self.normed_slices[slice_ix].reshape(1080, 160)
                 if np.max(strip) != 0:  # set values < 1
                     strip /= np.max(strip)
-                if n
+                if np.min(strip) <= -1:  # set values > -1
+                    strip /= abs(np.min(strip))
+                # save as patient_slice.png
+                try:
+                    io.imsave('Norm_PNG/{}_{}.png'.format(patient_num, slice_ix), strip)
+                except:
+                    mkdir_p('Nor
