@@ -153,4 +153,10 @@ class BrainPipeline(object):
             # for slice_ix in progress(xrange(155)):
             for slice_ix in progress(xrange(176)):
                 strip = self.slices_by_slice[slice_ix].reshape(1080, 160)
-                
+                if np.max(strip) != 0:
+                    strip /= np.max(strip)
+                try:
+                    io.imsave('Training_PNG/{}_{}.png'.format(patient_num, slice_ix), strip)
+                except:
+                    mkdir_p('Training_PNG/')
+              
