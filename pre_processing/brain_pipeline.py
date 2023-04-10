@@ -159,4 +159,9 @@ class BrainPipeline(object):
                     io.imsave('Training_PNG/{}_{}.png'.format(patient_num, slice_ix), strip)
                 except:
                     mkdir_p('Training_PNG/')
-              
+                    io.imsave('Training_PNG/{}_{}.png'.format(patient_num, slice_ix), strip)
+        else:
+            for slice_ix in progress(xrange(176)):  # reshape to strip
+                strip = self.normed_slices[slice_ix].reshape(1080, 160)
+                if np.max(strip) != 0:  # set values < 1
+  
