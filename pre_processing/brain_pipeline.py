@@ -147,4 +147,10 @@ class BrainPipeline(object):
                 try:
                     io.imsave('Norm_PNG/{}_{}.png'.format(patient_num, slice_ix), strip)
                 except:
-                    mkdir_p('Nor
+                    mkdir_p('Norm_PNG/')
+                    io.imsave('Norm_PNG/{}_{}.png'.format(patient_num, slice_ix), strip)
+        elif reg_norm_n4 == 'reg':
+            # for slice_ix in progress(xrange(155)):
+            for slice_ix in progress(xrange(176)):
+                strip = self.slices_by_slice[slice_ix].reshape(1080, 160)
+                
