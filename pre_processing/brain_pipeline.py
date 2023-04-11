@@ -170,4 +170,11 @@ class BrainPipeline(object):
                 # save as patient_slice.png
                 try:
                     io.imsave('n4_PNG/{}_{}.png'.format(patient_num, slice_ix), strip)
-           
+                except:
+                    mkdir_p('n4_PNG/')
+                    io.imsave('n4_PNG/{}_{}.png'.format(patient_num, slice_ix), strip)
+
+    def n4itk_norm(self, path, n_dims=3, n_iters='[20,20,10,5]'):
+        """
+        writes n4itk normalized image to parent_dir under orig_filename_n.mha
+        :param
