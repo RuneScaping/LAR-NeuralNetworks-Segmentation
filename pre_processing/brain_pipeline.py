@@ -177,4 +177,11 @@ class BrainPipeline(object):
     def n4itk_norm(self, path, n_dims=3, n_iters='[20,20,10,5]'):
         """
         writes n4itk normalized image to parent_dir under orig_filename_n.mha
-        :param
+        :param path: path to mha T1 or T1c file
+        :param n_dims:  param for n4itk filter
+        :param n_iters: param for n4itk filter
+        :return:
+        """
+        output_fn = path[:-4] + '_n.mha'
+        # run n4_bias_correction.py path n_dim n_iters output_fn
+        subprocess.call('
