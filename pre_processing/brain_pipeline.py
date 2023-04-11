@@ -164,4 +164,10 @@ class BrainPipeline(object):
             for slice_ix in progress(xrange(176)):  # reshape to strip
                 strip = self.normed_slices[slice_ix].reshape(1080, 160)
                 if np.max(strip) != 0:  # set values < 1
-  
+                    strip /= np.max(strip)
+                if np.min(strip) <= -1:  # set values > -1
+                    strip /= abs(np.min(strip))
+                # save as patient_slice.png
+                try:
+                    io.imsave('n4_PNG/{}_{}.png'.format(patient_num, slice_ix), strip)
+           
