@@ -207,4 +207,13 @@ def save_labels(labels):
     """
     it load the .mha instances of images labels and saves them into .png format
     for each slide of each patient
-    :param labels: lis
+    :param labels: list of filepaths to all labels
+    :return:
+    """
+
+    progress.currval = 0
+    for label_idx in progress(xrange(len(labels))):
+        print(labels[label_idx])
+        slices = io.imread(labels[label_idx], plugin='simpleitk')
+
+        for slice_idx in xran
