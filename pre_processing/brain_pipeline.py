@@ -197,4 +197,14 @@ def save_patient_slices(patients_path, type_modality):
      n4 (bias corrected and normalized
     :return:
     """
-    for patient
+    for patient_num, path in enumerate(patients_path):
+        a = BrainPipeline(path)
+        a.save_patient(type_modality, patient_num)
+
+
+
+def save_labels(labels):
+    """
+    it load the .mha instances of images labels and saves them into .png format
+    for each slide of each patient
+    :param labels: lis
