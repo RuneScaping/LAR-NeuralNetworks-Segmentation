@@ -191,4 +191,10 @@ class BrainPipeline(object):
 def save_patient_slices(patients_path, type_modality):
     """
     saves strips of patient slices to approriate directory (Training_PNG/, Norm_PNG/ or n4_PNG/)
- 
+     as patient-num_slice-num
+    :param patients_path: paths to any directories of patients to save. for example- glob("Training/HGG/**"
+    :param type_modality: options = reg (non-normalized), norm (normalized, but no bias correction),
+     n4 (bias corrected and normalized
+    :return:
+    """
+    for patient
