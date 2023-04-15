@@ -184,4 +184,11 @@ class BrainPipeline(object):
         """
         output_fn = path[:-4] + '_n.mha'
         # run n4_bias_correction.py path n_dim n_iters output_fn
-        subprocess.call('
+        subprocess.call('python n4_bias_correction.py ' + path + ' ' + str(n_dims) + ' ' + n_iters + ' ' + output_fn,
+                        shell=True)
+
+
+def save_patient_slices(patients_path, type_modality):
+    """
+    saves strips of patient slices to approriate directory (Training_PNG/, Norm_PNG/ or n4_PNG/)
+ 
