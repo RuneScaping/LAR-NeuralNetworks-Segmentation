@@ -229,4 +229,8 @@ def save_labels(labels):
 if __name__ == '__main__':
     # labels = glob('/Users/Cesare/Desktop/lavoro/brain_segmentation-master/BRATS-2/Image_Data/HG/**/*more*/**.mha')
     # print labels
-    # save_labels(labe
+    # save_labels(labels)
+    patients = glob('/Users/Cesare/Desktop/lavoro/brain_segmentation-master/BRATS-2/Image_Data/HG/**')
+    save_patient_slices(patients, 'reg')
+    save_patient_slices(patients, 'norm')
+    save_patient_slices(patients, 'n4')
