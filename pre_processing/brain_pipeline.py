@@ -222,4 +222,11 @@ def save_labels(labels):
                 io.imsave('Labels/{}_{}L.png'.format(label_idx, slice_idx), slices[slice_idx])
             except:
                 mkdir_p('Labels/')
-                io.i
+                io.imsave('Labels/{}_{}L.png'.format(label_idx, slice_idx), slices[slice_idx])
+            print('*' * 100, 'ok')
+
+
+if __name__ == '__main__':
+    # labels = glob('/Users/Cesare/Desktop/lavoro/brain_segmentation-master/BRATS-2/Image_Data/HG/**/*more*/**.mha')
+    # print labels
+    # save_labels(labe
