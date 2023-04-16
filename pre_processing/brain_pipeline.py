@@ -216,4 +216,10 @@ def save_labels(labels):
         print(labels[label_idx])
         slices = io.imread(labels[label_idx], plugin='simpleitk')
 
-        for slice_idx in xran
+        for slice_idx in xrange(len(slices)):
+            print(np.max(slices[slice_idx]), slices[slice_idx].shape)
+            try:
+                io.imsave('Labels/{}_{}L.png'.format(label_idx, slice_idx), slices[slice_idx])
+            except:
+                mkdir_p('Labels/')
+                io.i
