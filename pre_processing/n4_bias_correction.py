@@ -10,4 +10,14 @@ if len(sys.argv) < 2:
 
 # if output_image is given
 if len(sys.argv) > 3:
-    n4 = N4BiasField
+    n4 = N4BiasFieldCorrection(output_image=sys.argv[4])
+else:
+    n4 = N4BiasFieldCorrection()
+
+# dimension of input image, input image
+n4.inputs.dimension = int(sys.argv[2])
+n4.inputs.input_image = sys.argv[1]
+
+# if n_dinesions arg given
+if len(sys.argv) > 2:
+    n4.inputs.
