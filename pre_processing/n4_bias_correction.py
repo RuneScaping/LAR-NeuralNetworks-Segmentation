@@ -20,4 +20,6 @@ n4.inputs.input_image = sys.argv[1]
 
 # if n_dinesions arg given
 if len(sys.argv) > 2:
-    n4.inputs.
+    n4.inputs.n_iterations = ast.literal_eval(sys.argv[3])
+
+n4.run()
