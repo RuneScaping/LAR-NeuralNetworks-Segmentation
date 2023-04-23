@@ -22,4 +22,22 @@ __license__ = "MIT"
 __version__ = "1.0.1"
 __maintainer__ = "Cesare Catavitello"
 __email__ = "cesarec88@gmail.com"
-__status__ = "Producti
+__status__ = "Production"
+
+
+def mkdir_p(path):
+    """
+    mkdir -p function, makes folder recursively if required
+    :param path:
+    :return:
+    """
+    try:
+        makedirs(path)
+    except OSError as exc:  # Python >2.5
+        if exc.errno == EEXIST and isdir(path):
+            pass
+        else:
+            raise
+
+
+class ImagePn
