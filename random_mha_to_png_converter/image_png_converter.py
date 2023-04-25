@@ -47,4 +47,11 @@ class ImagePngConverter:
     """
 
     def __init__(self, global_counter, path_to_mha=None, how_many_from_one=1, saving_path='./test_data/'):
-        if path_
+        if path_to_mha is None:
+            raise NameError(' missing .mha path ')
+        self.images = []
+        for i in range(0, len(path_to_mha)):
+            self.images.append(np.array(sitk.GetArrayFromImage(sitk.ReadImage(path_to_mha[i]))))
+
+        mkdir_p(saving_path)
+        plt.
