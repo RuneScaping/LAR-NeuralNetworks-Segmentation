@@ -40,4 +40,11 @@ def mkdir_p(path):
             raise
 
 
-class ImagePn
+class ImagePngConverter:
+    """
+    a class to convert an .mha slice into .png image
+    to compute a random test with an input image to search for tumor patterns
+    """
+
+    def __init__(self, global_counter, path_to_mha=None, how_many_from_one=1, saving_path='./test_data/'):
+        if path_
