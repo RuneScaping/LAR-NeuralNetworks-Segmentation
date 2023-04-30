@@ -54,4 +54,11 @@ class ImagePngConverter:
             self.images.append(np.array(sitk.GetArrayFromImage(sitk.ReadImage(path_to_mha[i]))))
 
         mkdir_p(saving_path)
-        plt.
+        plt.set_cmap('gray')
+        while how_many_from_one > 0:
+            image_to_save = np.zeros((5,
+                                      216,
+                                      160))
+            rand_value = rnd.randint(30, len(self.images[0]) - 30)
+            for i in range(0, len(path_to_mha)):
+  
