@@ -61,4 +61,10 @@ class ImagePngConverter:
                                       160))
             rand_value = rnd.randint(30, len(self.images[0]) - 30)
             for i in range(0, len(path_to_mha)):
-  
+                try:
+                    image_to_save[i] = self.images[i][rand_value]
+                except:
+                    print('ahi')
+                    print(self.images[i][rand_value].shape)
+                    print(type(self.images))
+                    print(type(self.image
