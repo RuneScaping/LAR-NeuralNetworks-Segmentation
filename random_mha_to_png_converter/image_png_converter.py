@@ -67,4 +67,11 @@ class ImagePngConverter:
                     print('ahi')
                     print(self.images[i][rand_value].shape)
                     print(type(self.images))
-                    print(type(self.image
+                    print(type(self.images))
+                    print('*')
+                    continue
+            print(image_to_save.shape)
+            image_to_save = image_to_save.reshape((216 * 5, 160))
+            print(image_to_save.shape)
+            # image_to_save = resize(image_to_save, (5*216, 160), mode='constant')
+            # image_to_
