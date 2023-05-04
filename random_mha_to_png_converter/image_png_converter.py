@@ -74,4 +74,13 @@ class ImagePngConverter:
             image_to_save = image_to_save.reshape((216 * 5, 160))
             print(image_to_save.shape)
             # image_to_save = resize(image_to_save, (5*216, 160), mode='constant')
-            # image_to_
+            # image_to_save = image_to_save.resize(5*216, 160)
+            plt.imsave(saving_path + str(global_counter) + '.png',
+                       image_to_save)
+            global_counter += 1
+            how_many_from_one -= 1
+
+
+if __name__ == '__main__':
+
+    all_patients_path = glob('/Users/Cesare/Desktop
