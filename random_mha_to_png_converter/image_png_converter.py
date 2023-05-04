@@ -83,4 +83,11 @@ class ImagePngConverter:
 
 if __name__ == '__main__':
 
-    all_patients_path = glob('/Users/Cesare/Desktop
+    all_patients_path = glob('/Users/Cesare/Desktop/lavoro/cnn_med3d/BRATS-2/Image_Data/HG/**')
+
+    global_counter = 0
+    how_many_from_patient = 4
+    for i in range(0, 10):
+        patient_number = rnd.randint(0, len(all_patients_path) - 1)
+        # print(glob(all_patients_path[patient_number] + '/**/**.mha'))
+        single_patient
