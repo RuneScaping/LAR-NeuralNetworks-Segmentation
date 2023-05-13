@@ -90,4 +90,6 @@ if __name__ == '__main__':
     for i in range(0, 10):
         patient_number = rnd.randint(0, len(all_patients_path) - 1)
         # print(glob(all_patients_path[patient_number] + '/**/**.mha'))
-        single_patient
+        single_patient_path_mod = glob(all_patients_path[patient_number] + '/**/**.mha')
+        ImagePngConverter(global_counter, path_to_mha=single_patient_path_mod, how_many_from_one=how_many_from_patient)
+        global_counter += how_many_from_patient
