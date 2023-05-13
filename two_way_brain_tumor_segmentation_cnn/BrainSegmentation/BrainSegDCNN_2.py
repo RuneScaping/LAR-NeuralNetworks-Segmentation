@@ -17,4 +17,14 @@ from keras.layers.merge import Concatenate
 from keras.optimizers import SGD
 from keras import regularizers
 from keras.constraints import max_norm
-from keras.callbacks im
+from keras.callbacks import EarlyStopping, ModelCheckpoint
+from keras.utils import np_utils
+from os import makedirs
+from os.path import isdir
+from errno import EEXIST
+
+
+progress = progressbar.ProgressBar(widgets=[progressbar.Bar('*', '[', ']'), progressbar.Percentage(), ' '])
+
+def mkdir_p(path):
+   
