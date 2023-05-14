@@ -42,4 +42,15 @@ def mkdir_p(path):
 
 
 
-class Br
+class BrainSegDCNN(object):
+    """
+
+    """
+    def __init__(self):
+        self.dropout_rate = None
+        self.learning_rate = None
+        self.momentum_rate = None
+        self.decay_rate = None
+        self.l1_rate = None
+        self.l2_rate = None
+        self.batch_size 
