@@ -27,4 +27,19 @@ from errno import EEXIST
 progress = progressbar.ProgressBar(widgets=[progressbar.Bar('*', '[', ']'), progressbar.Percentage(), ' '])
 
 def mkdir_p(path):
-   
+    """
+    mkdir -p function, makes folder recursively if required
+    :param path:
+    :return:
+    """
+    try:
+        makedirs(path)
+    except OSError as exc:  # Python >2.5
+        if exc.errno == EEXIST and isdir(path):
+            pass
+        else:
+            raise
+
+
+
+class Br
