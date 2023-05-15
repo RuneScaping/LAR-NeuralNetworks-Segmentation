@@ -60,4 +60,10 @@ class BrainSegDCNN(object):
         self.subpatches_33 = None
 
     def __init__(self, dropout_rate, learning_rate, momentum_rate, decay_rate, l1_rate, l2_rate, batch_size, nb_epoch,
-                 nb_sample
+                 nb_sample, cascade_model=False):
+        """
+        The field cnn1 is initialized inside the method compile_model
+        :param dropout_rate: rate for the dropout layer
+        :param learning_rate: learning rate for training
+        :param momentum_rate: rate for momentum technique
+        :param decay_rate: learning rate decay over each upd
