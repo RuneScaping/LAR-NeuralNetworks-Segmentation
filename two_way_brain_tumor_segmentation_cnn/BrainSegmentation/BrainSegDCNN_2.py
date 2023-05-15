@@ -53,4 +53,11 @@ class BrainSegDCNN(object):
         self.decay_rate = None
         self.l1_rate = None
         self.l2_rate = None
-        self.batch_size 
+        self.batch_size = None
+        self.nb_epoch = None
+        self.nb_sample = None
+        self.model = None
+        self.subpatches_33 = None
+
+    def __init__(self, dropout_rate, learning_rate, momentum_rate, decay_rate, l1_rate, l2_rate, batch_size, nb_epoch,
+                 nb_sample
