@@ -66,4 +66,12 @@ class BrainSegDCNN(object):
         :param dropout_rate: rate for the dropout layer
         :param learning_rate: learning rate for training
         :param momentum_rate: rate for momentum technique
-        :param decay_rate: learning rate decay over each upd
+        :param decay_rate: learning rate decay over each update
+        :param l1_rate: rate for l1 regularization
+        :param l2_rate: rate for l2 regolarization
+        :param batch_size:
+        :param nb_epoch: number of epochs
+        :param cascade_model: True if the model is input cascade
+        """
+        self.dropout_rate = dropout_rate
+ 
