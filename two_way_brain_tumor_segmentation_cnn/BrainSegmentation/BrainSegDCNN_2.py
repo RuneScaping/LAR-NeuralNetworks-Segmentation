@@ -89,4 +89,10 @@ class BrainSegDCNN(object):
     def one_block_model(self, input_tensor):
         """
         Method to model one cnn. It doesn't compile the model.
-        :param input_tensor: tensor,
+        :param input_tensor: tensor, to feed the two path
+        :return: output: tensor, the output of the cnn
+        """
+
+        # localPath
+        loc_path = Conv2D(64, (7, 7), data_format='channels_first', padding='valid', activation='relu', use_bias=True,
+                         kernel_reg
