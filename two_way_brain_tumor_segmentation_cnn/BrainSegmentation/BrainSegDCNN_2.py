@@ -81,4 +81,12 @@ class BrainSegDCNN(object):
         self.l2_rate = l2_rate
         self.batch_size = batch_size
         self.nb_epoch = nb_epoch
-        sel
+        self.nb_sample = nb_sample
+        self.cascade_model = cascade_model
+        self.model = self.compile_model()
+
+    # model of TwoPathCNN
+    def one_block_model(self, input_tensor):
+        """
+        Method to model one cnn. It doesn't compile the model.
+        :param input_tensor: tensor,
