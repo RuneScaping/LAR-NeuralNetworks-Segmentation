@@ -95,4 +95,7 @@ class BrainSegDCNN(object):
 
         # localPath
         loc_path = Conv2D(64, (7, 7), data_format='channels_first', padding='valid', activation='relu', use_bias=True,
-                         kernel_reg
+                         kernel_regularizer=regularizers.l1_l2(self.l1_rate, self.l2_rate),
+                         kernel_constraint=max_norm(2.),
+                         bias_constraint=max_norm(2.), kernel_initializer='lecun_uniform', bias_initializer='zeros')(input_tensor)
+        loc_path = MaxPooling2D(pool_size=(4, 4), data_format
