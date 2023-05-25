@@ -124,4 +124,12 @@ class BrainSegDCNN(object):
         """
         Model and compile the first CNN and the whole two blocks DCNN.
         Also initialize the field cnn1
-        :ret
+        :return: Model, Two blocks DeepCNN compiled
+        """
+        if self.cascade_model:
+            # input layers
+            input65 = Input(shape=(4, 65, 65))
+            input33 = Input(shape=(4, 33, 33))
+            # first CNN modeling
+            output_cnn1 = self.one_block_model(input65)
+     
