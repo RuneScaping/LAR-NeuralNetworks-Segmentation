@@ -116,4 +116,12 @@ class BrainSegDCNN(object):
         # concatenation of the two path
         path = Concatenate(axis=1)([loc_path, glob_path])
         # output layer
-        output = Conv2D(5, (21, 21), data_format='channels_first', strides=1, padding='valid', activation='softmax', u
+        output = Conv2D(5, (21, 21), data_format='channels_first', strides=1, padding='valid', activation='softmax', use_bias=True,
+                        kernel_initializer='lecun_uniform', bias_initializer='zeros')(path)
+        return output
+
+    def compile_model(self):
+        """
+        Model and compile the first CNN and the whole two blocks DCNN.
+        Also initialize the field cnn1
+        :ret
