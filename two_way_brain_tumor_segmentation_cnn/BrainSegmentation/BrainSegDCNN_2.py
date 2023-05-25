@@ -112,4 +112,8 @@ class BrainSegDCNN(object):
                            kernel_regularizer=regularizers.l1_l2(self.l1_rate, self.l2_rate),
                            kernel_constraint=max_norm(2.),
                            bias_constraint=max_norm(2.))(input_tensor)
-        glob_path = Dropout(self.dropout_r
+        glob_path = Dropout(self.dropout_rate)(glob_path)
+        # concatenation of the two path
+        path = Concatenate(axis=1)([loc_path, glob_path])
+        # output layer
+        output = Conv2D(5, (21, 21), data_format='channels_first', strides=1, padding='valid', activation='softmax', u
