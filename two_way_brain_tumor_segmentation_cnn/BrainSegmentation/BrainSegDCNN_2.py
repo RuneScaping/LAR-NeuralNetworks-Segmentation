@@ -141,4 +141,9 @@ class BrainSegDCNN(object):
             print 'First CNN compiled!'
             # concatenation of the output of the first CNN and the input of shape 33x33
             conc_input = Concatenate(axis=1)([input33, output_cnn1])
-            # second cnn m
+            # second cnn modeling
+            output_dcnn = self.one_block_model(conc_input)
+            output_dcnn = Reshape((5,))(output_dcnn)
+            # whole dcnn compiling
+            dcnn = Model(inputs=[input65, input33], outputs=output_dcnn)
+            sgd = SGD(lr=self.learning_rate, momentum=self.momentum_rate, decay=self.decay_r
