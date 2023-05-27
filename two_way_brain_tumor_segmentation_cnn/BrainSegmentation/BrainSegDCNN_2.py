@@ -136,4 +136,9 @@ class BrainSegDCNN(object):
             cnn1 = Model(inputs=input65, outputs=output_cnn1)
             sgd = SGD(lr=self.learning_rate, momentum=self.momentum_rate, decay=self.decay_rate, nesterov=False)
             cnn1.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
-    
+            # initialize the field cnn1
+            self.cnn1 = cnn1
+            print 'First CNN compiled!'
+            # concatenation of the output of the first CNN and the input of shape 33x33
+            conc_input = Concatenate(axis=1)([input33, output_cnn1])
+            # second cnn m
