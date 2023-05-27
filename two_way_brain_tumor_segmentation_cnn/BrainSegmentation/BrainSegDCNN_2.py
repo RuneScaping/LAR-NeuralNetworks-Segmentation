@@ -146,4 +146,11 @@ class BrainSegDCNN(object):
             output_dcnn = Reshape((5,))(output_dcnn)
             # whole dcnn compiling
             dcnn = Model(inputs=[input65, input33], outputs=output_dcnn)
-            sgd = SGD(lr=self.learning_rate, momentum=self.momentum_rate, decay=self.decay_r
+            sgd = SGD(lr=self.learning_rate, momentum=self.momentum_rate, decay=self.decay_rate, nesterov=False)
+            dcnn.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
+            print 'Cascade DCNN compiled!'
+            return dcnn
+        else:
+            # input layers
+            input33 = Input(shape=(4, 33, 33))
+      
