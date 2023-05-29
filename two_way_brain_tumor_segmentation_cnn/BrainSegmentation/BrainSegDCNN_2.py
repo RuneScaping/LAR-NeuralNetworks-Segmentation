@@ -153,4 +153,8 @@ class BrainSegDCNN(object):
         else:
             # input layers
             input33 = Input(shape=(4, 33, 33))
-      
+            # first CNN modeling
+            output_cnn1 = self.one_block_model(input33)
+            # first cnn compiling
+            cnn1 = Model(inputs=input33, outputs=output_cnn1)
+            sgd = SGD(lr=self.learning_rate, momentum=self.momentum_rate, decay=self.decay_ra
