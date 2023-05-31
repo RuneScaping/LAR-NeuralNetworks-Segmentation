@@ -168,4 +168,11 @@ class BrainSegDCNN(object):
         '''
         Fit the model in both modality single or cascade. For cascade model need either 65x65 and 33x33 patches
         :param x33_train:33x33 patches
-        :param x65_train:65x65
+        :param x65_train:65x65 patches
+        :param y_train: labels
+        :param x33_uniftrain:33x33 uniformly distribuited patches
+        :param x65_uniftrain:65x65 uniformly distribuited patches
+        :param y_uniftrain:uniformly distribuited labels
+        '''
+        if self.cascade_model:
+ 
