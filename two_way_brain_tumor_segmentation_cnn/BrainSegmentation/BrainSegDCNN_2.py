@@ -164,4 +164,8 @@ class BrainSegDCNN(object):
             print 'Two pathway CNN compiled!'
             return cnn1
 
-    def fi
+    def fit_model(self, x33_train, y_train, x33_uniftrain, y_uniftrain, x65_train=None, x65_uniftrain=None):
+        '''
+        Fit the model in both modality single or cascade. For cascade model need either 65x65 and 33x33 patches
+        :param x33_train:33x33 patches
+        :param x65_train:65x65
