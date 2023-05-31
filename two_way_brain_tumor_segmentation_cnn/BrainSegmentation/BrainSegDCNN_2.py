@@ -175,4 +175,7 @@ class BrainSegDCNN(object):
         :param y_uniftrain:uniformly distribuited labels
         '''
         if self.cascade_model:
- 
+            if x65_train == None and x65_uniftrain == None:
+                print 'Error: patches 65x65, necessary to fit cascade model, not inserted.'
+            X33_train, X65_train, Y_train, X33_uniftrain, X65_uniftrain, Y_uniftrain = self.init_cascade_training(x33_train,
+                                
