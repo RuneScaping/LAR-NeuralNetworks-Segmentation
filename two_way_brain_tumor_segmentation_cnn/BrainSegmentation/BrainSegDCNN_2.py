@@ -157,4 +157,11 @@ class BrainSegDCNN(object):
             output_cnn1 = self.one_block_model(input33)
             # first cnn compiling
             cnn1 = Model(inputs=input33, outputs=output_cnn1)
-            sgd = SGD(lr=self.learning_rate, momentum=self.momentum_rate, decay=self.decay_ra
+            sgd = SGD(lr=self.learning_rate, momentum=self.momentum_rate, decay=self.decay_rate, nesterov=False)
+            cnn1.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
+            # initialize the field cnn1
+            self.cnn1 = cnn1
+            print 'Two pathway CNN compiled!'
+            return cnn1
+
+    def fi
