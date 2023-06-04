@@ -178,4 +178,7 @@ class BrainSegDCNN(object):
             if x65_train == None and x65_uniftrain == None:
                 print 'Error: patches 65x65, necessary to fit cascade model, not inserted.'
             X33_train, X65_train, Y_train, X33_uniftrain, X65_uniftrain, Y_uniftrain = self.init_cascade_training(x33_train,
-                                
+                                    x65_train, y_train, x33_uniftrain, x65_uniftrain, y_uniftrain)
+            # Stop the training if the monitor function doesn't change after patience epochs
+            earlystopping = EarlyStopping(monitor='val_loss', patience=2, verbose=1, mode='auto')
+            # Save model after ea
