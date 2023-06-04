@@ -185,4 +185,9 @@ class BrainSegDCNN(object):
             checkpointer = ModelCheckpoint(filepath="/home/ixb3/Scrivania/check/bm_{epoch:02d}-{val_loss:.2f}.hdf5", verbose=1)
             # Fit the first cnn
             self.fit_cnn1(X33_train, Y_train, X33_uniftrain, Y_uniftrain)
-      
+            # Fix all the weights of the first cnn
+            self.cnn1 = self.freeze_model(self.cnn1)
+
+            # First-phase training of the second cnn
+            self.model.fit(x=[X65_uniftrain, X33_uniftrain], y=Y_uniftrain, batch_size=self.batch_size, epochs=self.nb_epoch,
+                       callbac
