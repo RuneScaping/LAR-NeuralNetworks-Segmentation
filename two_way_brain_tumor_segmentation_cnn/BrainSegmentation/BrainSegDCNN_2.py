@@ -190,4 +190,8 @@ class BrainSegDCNN(object):
 
             # First-phase training of the second cnn
             self.model.fit(x=[X65_uniftrain, X33_uniftrain], y=Y_uniftrain, batch_size=self.batch_size, epochs=self.nb_epoch,
-                       callbac
+                       callbacks=[earlystopping, checkpointer], validation_split=0.3, verbose=1)
+            # fix all the layers of the dcnn except the output layer for the second-phase
+            self.freeze_model(self.model, freeze_output=False)
+            # Second-phase training of the second cnn
+            self.model.f
