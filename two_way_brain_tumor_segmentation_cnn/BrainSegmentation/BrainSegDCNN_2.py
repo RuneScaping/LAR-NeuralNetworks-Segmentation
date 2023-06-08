@@ -199,4 +199,10 @@ class BrainSegDCNN(object):
                        callbacks=[earlystopping, checkpointer], validation_split=0.3, verbose=1)
             print 'Model trained'
         else:
-            X33_train, Y_train, X33_uniftra
+            X33_train, Y_train, X33_uniftrain, Y_uniftrain = self.init_single_training(x33_train, y_train,
+                                                                                x33_uniftrain, y_uniftrain)
+            self.fit_cnn1(X33_train, Y_train, X33_uniftrain, Y_uniftrain)
+            self.model = self.cnn1
+            print 'Model trained'
+
+ 
