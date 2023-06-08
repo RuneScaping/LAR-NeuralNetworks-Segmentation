@@ -205,4 +205,10 @@ class BrainSegDCNN(object):
             self.model = self.cnn1
             print 'Model trained'
 
- 
+    def fit_cnn1(self, X33_train, Y_train, X33_unif_train, Y_unif_train):
+        # Create temp cnn with input shape=(4,33,33,)
+        input33 = Input(shape=(4, 33, 33))
+        output_cnn = self.one_block_model(input33)
+        output_cnn = Reshape((5,))(output_cnn)
+        # Cnn compiling
+  
