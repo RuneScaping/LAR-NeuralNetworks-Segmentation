@@ -221,4 +221,7 @@ class BrainSegDCNN(object):
         # First-phase training with uniformly distribuited training set
         temp_cnn.fit(x=X33_train, y=Y_train, batch_size=self.batch_size, epochs=self.nb_epoch,
                      callbacks=[earlystopping, checkpointer], validation_split=0.3,  verbose=1)
-        # fix all the
+        # fix all the layers of the temporary cnn except the output layer for the second-phase
+        temp_cnn = self.freeze_model(temp_cnn, freeze_output=False)
+        # Second-phase training of the output layer with training set with real distribution probabily
+        temp_cnn.fit(x=X33_unif_train, y=Y_unif_train, batch_
