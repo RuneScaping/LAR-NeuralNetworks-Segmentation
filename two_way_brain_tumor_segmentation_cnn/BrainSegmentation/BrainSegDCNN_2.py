@@ -217,4 +217,8 @@ class BrainSegDCNN(object):
         # Stop the training if the monitor function doesn't change after patience epochs
         earlystopping = EarlyStopping(monitor='val_loss', patience=2, verbose=1, mode='auto')
         # Save model after each epoch to check/bm_epoch#-val_loss
-        checkpointer = ModelCheckpoint(filepath="/home/ixb3/Scrivania/check/bm_{ep
+        checkpointer = ModelCheckpoint(filepath="/home/ixb3/Scrivania/check/bm_{epoch:02d}-{val_loss:.2f}.hdf5", verbose=1)
+        # First-phase training with uniformly distribuited training set
+        temp_cnn.fit(x=X33_train, y=Y_train, batch_size=self.batch_size, epochs=self.nb_epoch,
+                     callbacks=[earlystopping, checkpointer], validation_split=0.3,  verbose=1)
+        # fix all the
