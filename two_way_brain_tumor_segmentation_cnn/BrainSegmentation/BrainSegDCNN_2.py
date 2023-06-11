@@ -214,4 +214,7 @@ class BrainSegDCNN(object):
         temp_cnn = Model(inputs=input33, outputs=output_cnn)
         sgd = SGD(lr=self.learning_rate, momentum=self.momentum_rate, decay=self.decay_rate, nesterov=False)
         temp_cnn.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
-        # Stop the training if th
+        # Stop the training if the monitor function doesn't change after patience epochs
+        earlystopping = EarlyStopping(monitor='val_loss', patience=2, verbose=1, mode='auto')
+        # Save model after each epoch to check/bm_epoch#-val_loss
+        checkpointer = ModelCheckpoint(filepath="/home/ixb3/Scrivania/check/bm_{ep
