@@ -229,4 +229,9 @@ class BrainSegDCNN(object):
         # set the weights of the first cnn to the trained weights of the temporary cnn
         self.cnn1.set_weights(temp_cnn.get_weights())
 
-    def free
+    def freeze_model(self, compiled_model, freeze_output=True):
+        '''
+        Freeze the weights of the model, they will not be adjusted during training
+        :param compiled_model: model to freeze
+        :param freeze_output: if false the weights of the last layer of the model will not be freezed
+        :ret
