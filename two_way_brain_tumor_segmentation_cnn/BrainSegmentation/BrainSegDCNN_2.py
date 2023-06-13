@@ -234,4 +234,13 @@ class BrainSegDCNN(object):
         Freeze the weights of the model, they will not be adjusted during training
         :param compiled_model: model to freeze
         :param freeze_output: if false the weights of the last layer of the model will not be freezed
-        :ret
+        :return: model with freezed weights
+        '''
+        input_layer = compiled_model.inputs
+        output_layer = compiled_model.outputs
+        if freeze_output:
+            n = len(compiled_model.layers)
+        else:
+            n = len(compiled_model.layers) - 1
+        for i in range(n):
+            compil
