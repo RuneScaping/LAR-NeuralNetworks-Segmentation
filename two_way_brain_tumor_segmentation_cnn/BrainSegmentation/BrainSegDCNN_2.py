@@ -243,4 +243,7 @@ class BrainSegDCNN(object):
         else:
             n = len(compiled_model.layers) - 1
         for i in range(n):
-            compil
+            compiled_model.layers[i].trainable = False
+        freezed_model = Model(inputs=input_layer, outputs=output_layer)
+        sgd = SGD(lr=self.learning_rate, momentum=self.momentum_rate, decay=self.decay_rate, nesterov=False)
+        freezed_model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['ac
