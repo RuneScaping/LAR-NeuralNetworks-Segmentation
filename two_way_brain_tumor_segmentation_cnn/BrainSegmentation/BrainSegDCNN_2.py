@@ -246,4 +246,12 @@ class BrainSegDCNN(object):
             compiled_model.layers[i].trainable = False
         freezed_model = Model(inputs=input_layer, outputs=output_layer)
         sgd = SGD(lr=self.learning_rate, momentum=self.momentum_rate, decay=self.decay_rate, nesterov=False)
-        freezed_model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['ac
+        freezed_model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
+        print 'Model freezed'
+        return freezed_model
+
+    def init_single_training(self, x3, y, x3_unif, y_unif):
+        '''
+        helper function to initialize the training of the single model: shuffle the training set and make categorical
+        the targets
+        :param x3: 33x33 
