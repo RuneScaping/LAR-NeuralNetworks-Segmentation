@@ -254,4 +254,12 @@ class BrainSegDCNN(object):
         '''
         helper function to initialize the training of the single model: shuffle the training set and make categorical
         the targets
-        :param x3: 33x33 
+        :param x3: 33x33 patches
+        :param y: labels
+        :param x3_unif: 33x33 uniformly distribuited patches
+        :param y_unif: uniformly distribuited labels
+        :return:
+        '''
+        Y_train = np_utils.to_categorical(y, 5)
+        # shuffle training set
+        shuffle = zip(x3, Y_trai
