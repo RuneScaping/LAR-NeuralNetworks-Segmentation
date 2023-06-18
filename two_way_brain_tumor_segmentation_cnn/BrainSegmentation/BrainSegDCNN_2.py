@@ -262,4 +262,9 @@ class BrainSegDCNN(object):
         '''
         Y_train = np_utils.to_categorical(y, 5)
         # shuffle training set
-        shuffle = zip(x3, Y_trai
+        shuffle = zip(x3, Y_train)
+        np.random.shuffle(shuffle)
+        # transform shuffled training set back to numpy arrays
+        X33_train = np.array([shuffle[i][0] for i in xrange(len(shuffle))])
+        Y_train = np.array([shuffle[i][1] for i in xrange(len(shuffle))])  # .reshape((len(shuffle), 5, 1, 1))
+        Y_uniftrain = np_utils.to_ca
