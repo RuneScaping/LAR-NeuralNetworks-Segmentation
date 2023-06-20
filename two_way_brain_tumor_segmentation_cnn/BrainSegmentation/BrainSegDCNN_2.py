@@ -272,4 +272,8 @@ class BrainSegDCNN(object):
         shuffle = zip(x3_unif, Y_uniftrain)
         np.random.shuffle(shuffle)
         # transform shuffled uniformly distribuited training set back to numpy arrays
-        X33_uniftrain = np.array([shu
+        X33_uniftrain = np.array([shuffle[i][0] for i in xrange(len(shuffle))])
+        Y_uniftrain = np.array([shuffle[i][1] for i in xrange(len(shuffle))])  # .reshape((len(shuffle), 5, 1, 1))
+        return X33_train, Y_train, X33_uniftrain, Y_uniftrain
+
+    def init_cascade_training(self, x3, x6, y, x3_un
