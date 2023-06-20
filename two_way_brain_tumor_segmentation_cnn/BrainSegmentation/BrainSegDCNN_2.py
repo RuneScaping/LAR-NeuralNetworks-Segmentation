@@ -276,4 +276,11 @@ class BrainSegDCNN(object):
         Y_uniftrain = np.array([shuffle[i][1] for i in xrange(len(shuffle))])  # .reshape((len(shuffle), 5, 1, 1))
         return X33_train, Y_train, X33_uniftrain, Y_uniftrain
 
-    def init_cascade_training(self, x3, x6, y, x3_un
+    def init_cascade_training(self, x3, x6, y, x3_unif, x6_unif, y_unif):
+        '''
+        helper function to initialize the training of the cascade model:: shuffle the training set and make categorical
+        the targets
+        :param x3: 33x33 patches
+        :param x6: 65x65 patches
+        :param y: labels
+        :param x3_unif: 33x33 uniformly distri
