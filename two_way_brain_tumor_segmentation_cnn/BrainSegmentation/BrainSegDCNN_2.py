@@ -283,4 +283,13 @@ class BrainSegDCNN(object):
         :param x3: 33x33 patches
         :param x6: 65x65 patches
         :param y: labels
-        :param x3_unif: 33x33 uniformly distri
+        :param x3_unif: 33x33 uniformly distribuited patches
+        :param x6_unif: 65x65 uniformly distribuited patches
+        :param y_unif: uniformly distribuited labels
+        :return:
+        '''
+        Y_train = np_utils.to_categorical(y, 5)
+        # shuffle training set
+        shuffle = zip(x3, x6, Y_train)
+        np.random.shuffle(shuffle)
+    
