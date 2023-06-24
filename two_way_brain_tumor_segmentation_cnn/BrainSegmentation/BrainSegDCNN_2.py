@@ -304,4 +304,10 @@ class BrainSegDCNN(object):
         X33_uniftrain = np.array([shuffle[i][0] for i in xrange(len(shuffle))])
         X65_uniftrain = np.array([shuffle[i][1] for i in xrange(len(shuffle))])
         Y_uniftrain = np.array([shuffle[i][2] for i in xrange(len(shuffle))])  # .reshape((len(shuffle), 5, 1, 1))
-        return
+        return X33_train, X65_train, Y_train, X33_uniftrain, X65_uniftrain, Y_uniftrain
+
+    def save_model(self, model_name):
+        '''
+        INPUT string 'model_name': path where to save model and weights, without extension
+        Saves current model as json and weights as h5df file
+      
