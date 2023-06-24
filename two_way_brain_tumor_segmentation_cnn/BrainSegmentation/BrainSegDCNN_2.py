@@ -310,4 +310,12 @@ class BrainSegDCNN(object):
         '''
         INPUT string 'model_name': path where to save model and weights, without extension
         Saves current model as json and weights as h5df file
-      
+        '''
+
+        model_tosave = '{}.json'.format(model_name)
+        weights = '{}.hdf5'.format(model_name)
+        json_string = self.model.to_json()
+        self.model.save_weights(weights)
+        with open(model_tosave, 'w') as f:
+            json.dump(json_string, f)
+        print 'M
