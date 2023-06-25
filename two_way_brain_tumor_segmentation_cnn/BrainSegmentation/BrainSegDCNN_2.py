@@ -334,4 +334,11 @@ class BrainSegDCNN(object):
         model_comp = model_from_json(json.loads(m))
         model_comp.load_weights(weights)
         print 'Model loaded.'
-    
+        self.model = model_comp
+        return model_comp
+
+    def predict_image(self, filepath_image, show=False):
+        '''
+        predicts classes of input image
+        INPUT   (1) str 'filepath_image': filepath to image to predict on
+                (2) bool 'show': True to show the
