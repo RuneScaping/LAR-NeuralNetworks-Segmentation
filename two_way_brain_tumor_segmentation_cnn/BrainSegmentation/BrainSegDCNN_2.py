@@ -318,4 +318,12 @@ class BrainSegDCNN(object):
         self.model.save_weights(weights)
         with open(model_tosave, 'w') as f:
             json.dump(json_string, f)
-        print 'M
+        print 'Model saved.'
+
+    def load_model(self, model_name):
+        '''
+        Load a model
+        INPUT  (1) string 'model_name': filepath to model and weights, not including extension
+        OUTPUT: Model with loaded weights. can fit on model using loaded_model=True in fit_model method
+        '''
+        print 'Loading model {}'.fo
