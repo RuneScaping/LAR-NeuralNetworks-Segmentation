@@ -326,4 +326,12 @@ class BrainSegDCNN(object):
         INPUT  (1) string 'model_name': filepath to model and weights, not including extension
         OUTPUT: Model with loaded weights. can fit on model using loaded_model=True in fit_model method
         '''
-        print 'Loading model {}'.fo
+        print 'Loading model {}'.format(model_name)
+        model_toload = '{}.json'.format(model_name)
+        weights = '{}.hdf5'.format(model_name)
+        with open(model_toload) as f:
+            m = f.next()
+        model_comp = model_from_json(json.loads(m))
+        model_comp.load_weights(weights)
+        print 'Model loaded.'
+    
