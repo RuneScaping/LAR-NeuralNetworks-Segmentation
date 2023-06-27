@@ -341,4 +341,9 @@ class BrainSegDCNN(object):
         '''
         predicts classes of input image
         INPUT   (1) str 'filepath_image': filepath to image to predict on
-                (2) bool 'show': True to show the
+                (2) bool 'show': True to show the results of prediction, False to return prediction
+        OUTPUT  (1) if show == False: array of predicted pixel classes for the center 208 x 208 pixels
+                (2) if show == True: displays segmentation results
+        '''
+        print 'Starting prediction...'
+        
