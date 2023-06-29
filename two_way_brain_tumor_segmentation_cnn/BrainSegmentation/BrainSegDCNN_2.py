@@ -346,4 +346,10 @@ class BrainSegDCNN(object):
                 (2) if show == True: displays segmentation results
         '''
         print 'Starting prediction...'
-        
+        if self.cascade_model:
+            images = io.imread(filepath_image).astype('float').reshape(5, 216, 160)
+            p33list = []
+            p65list = []
+            # create patches from an entire slice
+            for image in images[:-1]:
+                if np.max(image) 
