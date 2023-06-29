@@ -352,4 +352,10 @@ class BrainSegDCNN(object):
             p65list = []
             # create patches from an entire slice
             for image in images[:-1]:
-                if np.max(image) 
+                if np.max(image) != 0:
+                    image /= np.max(image)
+                patch65 = extract_patches_2d(image, (65, 65))
+                p65list.append(patch65)
+                p33list.append(self.center_n(33, patch65))
+                print str(len(p33list))
+            patches33 = np.array(zip(p33list[0], p33list[1], p33list[2], p33lis
