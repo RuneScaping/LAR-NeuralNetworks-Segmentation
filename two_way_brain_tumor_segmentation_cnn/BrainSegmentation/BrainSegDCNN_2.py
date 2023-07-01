@@ -371,4 +371,10 @@ class BrainSegDCNN(object):
                 return prediction
         else:
             images = io.imread(filepath_image).astype('float').reshape(5, 216, 160)
-         
+            p33list = []
+            # create patches from an entire slice
+            for image in images[:-1]:
+                if np.max(image) != 0:
+                    image /= np.max(image)
+                patch33 = extract_patches_2d(image, (33, 33))
+                p33list.append(
