@@ -377,4 +377,9 @@ class BrainSegDCNN(object):
                 if np.max(image) != 0:
                     image /= np.max(image)
                 patch33 = extract_patches_2d(image, (33, 33))
-                p33list.append(
+                p33list.append(patch33)
+            patches33 = np.array(zip(p33list[0], p33list[1], p33list[2], p33list[3]))
+            # predict classes of each pixel based on model
+            prediction = self.cnn1.predict(patches33)
+            print 'Predicted'
+            prediction = prediction.reshape(5, 18
