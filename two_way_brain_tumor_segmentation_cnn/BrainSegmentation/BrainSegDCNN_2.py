@@ -363,4 +363,12 @@ class BrainSegDCNN(object):
             # predict classes of each pixel based on model
             prediction = self.model.predict([patches65, patches33])
             print 'Predicted'
-            prediction = p
+            prediction = prediction.reshape(208, 208)
+            if show:
+                io.imshow(prediction)
+                plt.show
+            else:
+                return prediction
+        else:
+            images = io.imread(filepath_image).astype('float').reshape(5, 216, 160)
+         
