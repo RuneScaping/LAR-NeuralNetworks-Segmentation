@@ -358,4 +358,9 @@ class BrainSegDCNN(object):
                 p65list.append(patch65)
                 p33list.append(self.center_n(33, patch65))
                 print str(len(p33list))
-            patches33 = np.array(zip(p33list[0], p33list[1], p33list[2], p33lis
+            patches33 = np.array(zip(p33list[0], p33list[1], p33list[2], p33list[3]))
+            patches65 = np.array(zip(p65list[0], p65list[1], p65list[2], p65list[3]))
+            # predict classes of each pixel based on model
+            prediction = self.model.predict([patches65, patches33])
+            print 'Predicted'
+            prediction = p
