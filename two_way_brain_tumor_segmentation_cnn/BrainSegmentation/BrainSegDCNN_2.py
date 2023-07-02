@@ -390,3 +390,14 @@ class BrainSegDCNN(object):
                     io.imshow(prediction[i])
                     plt.show
                     print 'Showed'
+                    return prediction
+            else:
+                return predicted_classes
+
+
+
+    def center_n(self, n, patches):
+        """
+        helper function, get the nxn centered subpatch
+        :param n: int, size of center patch to take (square)
+        :pa
