@@ -382,4 +382,11 @@ class BrainSegDCNN(object):
             # predict classes of each pixel based on model
             prediction = self.cnn1.predict(patches33)
             print 'Predicted'
-            prediction = prediction.reshape(5, 18
+            prediction = prediction.reshape(5, 184, 128)
+            predicted_classes = np.argmax(prediction, axis=0)
+            if show:
+                print 'Let s show'
+                for i in range(5):
+                    io.imshow(prediction[i])
+                    plt.show
+                    print 'Showed'
