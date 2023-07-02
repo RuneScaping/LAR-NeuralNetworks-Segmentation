@@ -410,4 +410,13 @@ class BrainSegDCNN(object):
             subs = np.array(
 
                     mode[(h / 2) - (n / 2):(h / 2) + ((n + 1) / 2),
-                    (w
+                    (w / 2) - (n / 2):(w / 2) + ((n + 1) / 2)]
+                    #for patch in mode
+
+            )
+            sub_patches.append(subs)
+        return np.array(sub_patches)
+
+    def save_segmented_image(self, filepath_image, modality='t1c', show=False):
+        '''
+        Creates an image of original br
