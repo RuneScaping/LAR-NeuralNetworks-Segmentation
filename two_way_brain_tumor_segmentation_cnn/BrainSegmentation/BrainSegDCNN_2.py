@@ -400,4 +400,14 @@ class BrainSegDCNN(object):
         """
         helper function, get the nxn centered subpatch
         :param n: int, size of center patch to take (square)
-        :pa
+        :param patches: list of patches to take subpatch of
+        :return: list of center nxn patches.
+        """
+        h = 65
+        w = 65
+        sub_patches = []
+        for mode in patches:
+            subs = np.array(
+
+                    mode[(h / 2) - (n / 2):(h / 2) + ((n + 1) / 2),
+                    (w
