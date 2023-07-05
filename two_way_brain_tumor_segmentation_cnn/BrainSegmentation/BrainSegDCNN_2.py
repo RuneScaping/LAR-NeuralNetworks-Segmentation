@@ -421,4 +421,9 @@ class BrainSegDCNN(object):
         '''
         Creates an image of original brain with segmentation overlay and save it in ./predictions
         INPUT   (1) str 'filepath_image': filepath to test image for segmentation, including file extension
-                (2) str 'modality': imaging modality to use as background. defaults to t1c. optio
+                (2) str 'modality': imaging modality to use as background. defaults to t1c. options: (flair, t1, t1c, t2)
+                (3) bool 'show': If true, shows output image. defaults to False.
+        OUTPUT  (1) if show is True, shows image of segmentation results
+                (2) if show is false, returns segmented image.
+        '''
+        modes = {'flair': 0, 't1': 1, 't1c': 2, 't2': 3
