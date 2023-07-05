@@ -419,4 +419,6 @@ class BrainSegDCNN(object):
 
     def save_segmented_image(self, filepath_image, modality='t1c', show=False):
         '''
-        Creates an image of original br
+        Creates an image of original brain with segmentation overlay and save it in ./predictions
+        INPUT   (1) str 'filepath_image': filepath to test image for segmentation, including file extension
+                (2) str 'modality': imaging modality to use as background. defaults to t1c. optio
