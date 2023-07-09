@@ -441,4 +441,12 @@ class BrainSegDCNN(object):
         # overlay = mark_boundaries(test_back, img_mask)
         gray_img = img_as_float(test_back)
 
-   
+        # adjust gamma of image
+        image = adjust_gamma(color.gray2rgb(gray_img), 0.65)
+        sliced_image = image.copy()
+        red_multiplier = [1, 0.2, 0.2]
+        yellow_multiplier = [1, 1, 0.25]
+        green_multiplier = [0.35, 0.75, 0.25]
+        blue_multiplier = [0, 0.25, 0.9]
+
+        pri
