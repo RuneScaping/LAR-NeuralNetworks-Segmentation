@@ -426,4 +426,10 @@ class BrainSegDCNN(object):
         OUTPUT  (1) if show is True, shows image of segmentation results
                 (2) if show is false, returns segmented image.
         '''
-        modes = {'flair': 0, 't1': 1, 't1c': 2, 't2': 3
+        modes = {'flair': 0, 't1': 1, 't1c': 2, 't2': 3}
+
+        segmentation = self.predict_image(filepath_image, show=False)
+        print 'segmentation = ' + str(segmentation)
+        img_mask = np.pad(segmentation, (16, 16), mode='edge')
+        ones = np.argwhere(img_mask == 1)
+        twos = np.argwhere(img_ma
