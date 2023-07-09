@@ -432,4 +432,13 @@ class BrainSegDCNN(object):
         print 'segmentation = ' + str(segmentation)
         img_mask = np.pad(segmentation, (16, 16), mode='edge')
         ones = np.argwhere(img_mask == 1)
-        twos = np.argwhere(img_ma
+        twos = np.argwhere(img_mask == 2)
+        threes = np.argwhere(img_mask == 3)
+        fours = np.argwhere(img_mask == 4)
+
+        test_im = io.imread(filepath_image)
+        test_back = test_im.reshape(5, 216, 160)[modes[modality]]
+        # overlay = mark_boundaries(test_back, img_mask)
+        gray_img = img_as_float(test_back)
+
+   
