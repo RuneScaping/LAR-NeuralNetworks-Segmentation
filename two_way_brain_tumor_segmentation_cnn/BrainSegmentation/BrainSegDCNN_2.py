@@ -472,4 +472,12 @@ class BrainSegDCNN(object):
         print 'Saving...'
         try:
             mkdir_p('./predictions/')
-            io.imsave('./predictions/' 
+            io.imsave('./predictions/' + os.path.basename(filepath_image) + '.png', sliced_image)
+            print 'prediction saved.'
+        except:
+            io.imsave('./predictions/' + os.path.basename(filepath_image) + '.png', sliced_image)
+            print 'prediction saved.'
+
+if __name__ == "__main__":
+    #set arguments
+    parser =
