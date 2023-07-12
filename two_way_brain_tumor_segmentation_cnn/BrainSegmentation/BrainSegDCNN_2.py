@@ -457,4 +457,9 @@ class BrainSegDCNN(object):
         # change colors of segmented classes
         for i in xrange(len(ones)):
             sliced_image[ones[i][0]][ones[i][1]] = red_multiplier
-        for i in xrange(len(tw
+        for i in xrange(len(twos)):
+            sliced_image[twos[i][0]][twos[i][1]] = green_multiplier
+        for i in xrange(len(threes)):
+            sliced_image[threes[i][0]][threes[i][1]] = blue_multiplier
+        for i in xrange(len(fours)):
+            sliced_image[fours[i][0]][fours[i][1]] = yellow_multipl
