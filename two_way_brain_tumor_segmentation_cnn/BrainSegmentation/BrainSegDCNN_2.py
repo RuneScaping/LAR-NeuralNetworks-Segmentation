@@ -480,4 +480,9 @@ class BrainSegDCNN(object):
 
 if __name__ == "__main__":
     #set arguments
-    parser =
+    parser = argparse.ArgumentParser(description='Commands to istanciate or load the convolutional neural network')
+    parser.add_argument('-cascade',
+                        '-c',
+                        action='store',
+                        default=False,
+                        dest='
