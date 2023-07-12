@@ -462,4 +462,14 @@ class BrainSegDCNN(object):
         for i in xrange(len(threes)):
             sliced_image[threes[i][0]][threes[i][1]] = blue_multiplier
         for i in xrange(len(fours)):
-            sliced_image[fours[i][0]][fours[i][1]] = yellow_multipl
+            sliced_image[fours[i][0]][fours[i][1]] = yellow_multiplier
+        #if show=True show the prediction
+        if show:
+            print 'Showing...'
+            io.imshow(sliced_image)
+            plt.show()
+        #save the prediction
+        print 'Saving...'
+        try:
+            mkdir_p('./predictions/')
+            io.imsave('./predictions/' 
