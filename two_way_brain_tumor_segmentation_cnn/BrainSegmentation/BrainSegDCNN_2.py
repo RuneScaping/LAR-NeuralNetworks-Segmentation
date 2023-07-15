@@ -485,4 +485,11 @@ if __name__ == "__main__":
                         '-c',
                         action='store',
                         default=False,
-                        dest='
+                        dest='cascade_model',
+                        type=bool,
+                        help='set the model to be cascade_model(True) or single_model(False)\n default=False')
+
+    parser.add_argument('-train',
+                        '-t',
+                        action='store',
+                        default=1
