@@ -499,4 +499,9 @@ if __name__ == "__main__":
     parser.add_argument('-samplespath',
                         '-sp',
                         action='store',
-          
+                        default='Training_PNG',
+                        dest='training_path',
+                        type=str,
+                        help='set the path of the folder containing samples for training,\n default=None')
+    parser.add_argument('-labelspath',
+                 
