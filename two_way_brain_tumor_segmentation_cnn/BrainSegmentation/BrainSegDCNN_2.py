@@ -492,4 +492,11 @@ if __name__ == "__main__":
     parser.add_argument('-train',
                         '-t',
                         action='store',
-                        default=1
+                        default=1000,
+                        dest='nb_samples',
+                        type=int,
+                        help='set the number of data to train with,\n default=1000')
+    parser.add_argument('-samplespath',
+                        '-sp',
+                        action='store',
+          
