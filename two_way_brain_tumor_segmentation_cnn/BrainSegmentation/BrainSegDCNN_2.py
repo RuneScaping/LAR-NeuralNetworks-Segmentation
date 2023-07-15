@@ -504,4 +504,11 @@ if __name__ == "__main__":
                         type=str,
                         help='set the path of the folder containing samples for training,\n default=None')
     parser.add_argument('-labelspath',
-                 
+                        '-lp',
+                        action='store',
+                        default='Labels',
+                        dest='labels_path',
+                        type=str,
+                        help='set the path of the folder containing labels for training,\n default=None')
+
+    parser.add_a
