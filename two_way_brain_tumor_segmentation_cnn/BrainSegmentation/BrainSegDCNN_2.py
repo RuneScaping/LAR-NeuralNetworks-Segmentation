@@ -511,4 +511,11 @@ if __name__ == "__main__":
                         type=str,
                         help='set the path of the folder containing labels for training,\n default=None')
 
-    parser.add_a
+    parser.add_argument('-load',
+                        '-l',
+                        action='store',
+                        dest='model_to_load',
+                        default=0,
+                        type=str,
+                        help='load the model already trained,\n'
+             
