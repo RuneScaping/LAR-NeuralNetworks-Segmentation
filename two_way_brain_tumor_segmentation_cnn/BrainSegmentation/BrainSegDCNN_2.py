@@ -531,4 +531,9 @@ if __name__ == "__main__":
                              'default no save happen,\n'
                              'model name as:\n'
                              'model_name')
-  
+    parser.add_argument('-test',
+                        action='store',
+                        dest='test_path',
+                        default=None,
+                        type=str,
+                        help='path of the folder containing the RMI images to execute the brain segmenta
