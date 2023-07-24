@@ -525,4 +525,10 @@ if __name__ == "__main__":
                         '-s',
                         action='store',
                         dest='save',
-     
+                        default=None,
+                        type=str,
+                        help='save the model after been trained,\n'
+                             'default no save happen,\n'
+                             'model name as:\n'
+                             'model_name')
+  
