@@ -542,4 +542,8 @@ if __name__ == "__main__":
                              'test_path')
     result = parser.parse_args()
     #compile the model
-    brain_seg = BrainSegDCNN(dropout_rate=0.2, learning_rate=0.01, momentum_rate=0.5
+    brain_seg = BrainSegDCNN(dropout_rate=0.2, learning_rate=0.01, momentum_rate=0.5, decay_rate=0.1,
+                                 l1_rate=0.001,
+                                 l2_rate=0.001, batch_size=20, nb_epoch=10, nb_sample=result.nb_samples,
+                                 cascade_model=result.cascade_model)
+    #train the model if -load is not give
