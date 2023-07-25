@@ -536,4 +536,10 @@ if __name__ == "__main__":
                         dest='test_path',
                         default=None,
                         type=str,
-                        help='path of the folder containing the RMI images to execute the brain segmenta
+                        help='path of the folder containing the RMI images to execute the brain segmentation\n'
+                             'default no execution happens,\n'
+                             'test folder path as:\n'
+                             'test_path')
+    result = parser.parse_args()
+    #compile the model
+    brain_seg = BrainSegDCNN(dropout_rate=0.2, learning_rate=0.01, momentum_rate=0.5
