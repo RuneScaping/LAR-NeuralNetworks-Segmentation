@@ -546,4 +546,10 @@ if __name__ == "__main__":
                                  l1_rate=0.001,
                                  l2_rate=0.001, batch_size=20, nb_epoch=10, nb_sample=result.nb_samples,
                                  cascade_model=result.cascade_model)
-    #train the model if -load is not give
+    #train the model if -load is not given
+    if type(result.model_to_load) is int:
+        # check if the path of the folder containing the training samples is given, otherwise ask to insert it
+        training_set = glob(result.training_path + '/**')
+        #train the model in single or cascade model
+        if brain_seg.cascade_model:
+            patches
