@@ -555,4 +555,9 @@ if __name__ == "__main__":
             patches = PatchLibrary(train_samples=training_set, label_folder_path=result.labels_path,
                                        num_samples=brain_seg.nb_sample)
             x33_train, x65_train, y_train = patches.make_training_patches(balanced_classes=False)
-            
+            x33_uniftrain, x65_uniftrain, y_uniftrain = patches.make_training_patches()
+            # fit model
+            brain_seg.fit_model(x33_train, y_train, x33_uniftrain, y_uniftrain, x65_train=x65_train,
+                                    x65_uniftrain=x65_uniftrain)
+        else:
+            patches = Pat
