@@ -552,4 +552,7 @@ if __name__ == "__main__":
         training_set = glob(result.training_path + '/**')
         #train the model in single or cascade model
         if brain_seg.cascade_model:
-            patches
+            patches = PatchLibrary(train_samples=training_set, label_folder_path=result.labels_path,
+                                       num_samples=brain_seg.nb_sample)
+            x33_train, x65_train, y_train = patches.make_training_patches(balanced_classes=False)
+            
