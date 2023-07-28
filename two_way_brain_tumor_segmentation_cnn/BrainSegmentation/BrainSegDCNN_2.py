@@ -569,4 +569,10 @@ if __name__ == "__main__":
     #load an already trained model if -load is given
     else:
         brain_seg.model = brain_seg.load_model('./models/' + result.model_to_load)
-    
+    #save the model if -save is given
+    if result.save is not None:
+        brain_seg.save_model('./models/' + result.save)
+    #predict all the RMI images contained in the given path -test
+    if result.test is not None:
+        tests = glob(result.test + '/**')
+        segmented
