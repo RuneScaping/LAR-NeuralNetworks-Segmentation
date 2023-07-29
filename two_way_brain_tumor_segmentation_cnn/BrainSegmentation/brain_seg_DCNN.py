@@ -186,3 +186,8 @@ class BrainSegDCNN(object):
             model.layers[i].trainable=False
         freezed_model=Model(inputs=input, outputs=output)
         sgd = SGD(lr=self.learning_rate, momentum=self.momentum_rate, decay=self.decay_rate, nesterov=False)
+        freezed_model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
+        return freezed_model
+
+if __name__ == "__main__":
+    model = BrainSegDCNN(0.2, 0.003, 0.02, 0.00008, 0.001, 0.001)
