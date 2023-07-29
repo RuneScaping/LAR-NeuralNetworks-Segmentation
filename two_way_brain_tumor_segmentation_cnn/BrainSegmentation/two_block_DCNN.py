@@ -15,4 +15,14 @@ __maintainer__ = "Matteo Causio"
 __status__ = "Production"
 
 
-class T
+class TwoBlocksDCNN(object):
+    """
+
+    """
+
+    def __init__(self, dropout_rate, learning_rate, momentum_rate, decay_rate, l1_rate, l2_rate):
+        self.dropout_rate = dropout_rate
+        self.learning_rate = learning_rate
+        self.momentum_rate = momentum_rate
+        self.decay_rate = decay_rate
+        self.l1_rat
