@@ -575,4 +575,6 @@ if __name__ == "__main__":
     #predict all the RMI images contained in the given path -test
     if result.test is not None:
         tests = glob(result.test + '/**')
-        segmented
+        segmented_images = []
+        for topredict_img in tests:
+            brain_seg.save_segmented_image(topredict_img, show=True)
