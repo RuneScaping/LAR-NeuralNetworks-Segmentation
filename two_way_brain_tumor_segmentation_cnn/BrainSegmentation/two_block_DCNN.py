@@ -25,4 +25,15 @@ class TwoBlocksDCNN(object):
         self.learning_rate = learning_rate
         self.momentum_rate = momentum_rate
         self.decay_rate = decay_rate
-        self.l1_rat
+        self.l1_rate = l1_rate
+        self.l2_rate = l2_rate
+        self.model = self.twoBlocksDCNN()
+
+    # model of TwoPathCNN
+    def twoBlocksDCNN(self):
+        """
+
+
+        :param in_channels: int, number of input channel
+        :param in_shape: int, dim of the input image
+        :return: Model, 
