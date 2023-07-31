@@ -36,4 +36,10 @@ class TwoBlocksDCNN(object):
 
         :param in_channels: int, number of input channel
         :param in_shape: int, dim of the input image
-        :return: Model, 
+        :return: Model, TwoPathCNN compiled
+        """
+        input = Input(shape=(65, 65, 4))
+        # localPath
+        locPath = Conv2D(64, (7, 7), padding='valid', activation='relu', use_bias=True,
+                         kernel_regularizer=regularizers.l1_l2(self.l1_rate, self.l2_rate),
+                     
