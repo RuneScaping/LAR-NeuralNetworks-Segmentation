@@ -65,4 +65,8 @@ class TwoBlocksDCNN(object):
         #second CNN
         input_cnn2 = Input(shape=(33, 33, 4))
         conc_input = Concatenate(axis=-1)([input_cnn2, cnn1])
-        locPath2 = Conv2D(64, (7, 7), padding='valid
+        locPath2 = Conv2D(64, (7, 7), padding='valid', activation='relu', use_bias=True,
+                         kernel_regularizer=regularizers.l1_l2(self.l1_rate, self.l2_rate),
+                         kernel_constraint=max_norm(2.),
+                         bias_constraint=max_norm(2.))(conc_input)
+        l
