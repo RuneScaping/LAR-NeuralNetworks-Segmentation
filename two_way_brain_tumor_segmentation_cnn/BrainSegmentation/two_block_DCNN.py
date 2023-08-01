@@ -55,4 +55,8 @@ class TwoBlocksDCNN(object):
         # globalPath
         globPath = Conv2D(160, (13, 13), strides=1, padding='valid', activation='relu', use_bias=True,
                           kernel_regularizer=regularizers.l1_l2(self.l1_rate, self.l2_rate),
-    
+                          kernel_constraint=max_norm(2.),
+                          bias_constraint=max_norm(2.))(input)
+        globPath = Dropout(self.dropout_rate)(globPath)
+        # concatenation of the two path
+        path = Concatenate(axis=-1)([locPath, 
