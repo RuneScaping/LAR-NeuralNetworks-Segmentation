@@ -59,4 +59,10 @@ class TwoBlocksDCNN(object):
                           bias_constraint=max_norm(2.))(input)
         globPath = Dropout(self.dropout_rate)(globPath)
         # concatenation of the two path
-        path = Concatenate(axis=-1)([locPath, 
+        path = Concatenate(axis=-1)([locPath, globPath])
+        # output layer
+        cnn1 = Conv2D(5, (21, 21), padding='valid', activation='softmax', use_bias=True)(path)
+        #second CNN
+        input_cnn2 = Input(shape=(33, 33, 4))
+        conc_input = Concatenate(axis=-1)([input_cnn2, cnn1])
+        locPath2 = Conv2D(64, (7, 7), padding='valid
