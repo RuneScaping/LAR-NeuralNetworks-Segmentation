@@ -72,4 +72,10 @@ class TwoBlocksDCNN(object):
         locPath2 = MaxPooling2D(pool_size=(4, 4), strides=1, padding='valid')(locPath2)
         locPath2 = Dropout(self.dropout_rate)(locPath2)
         locPath2 = Conv2D(64, (3, 3), padding='valid', activation='relu', use_bias=True,
-                         kernel_regularizer=regularizers.l1_l2(self.l1_rate, self.l2_rate
+                         kernel_regularizer=regularizers.l1_l2(self.l1_rate, self.l2_rate),
+                         kernel_constraint=max_norm(2.),
+                         bias_constraint=max_norm(2.))(locPath2)
+        locPath2 = MaxPooling2D(pool_size=(2, 2), strides=1, padding='valid')(locPath2)
+        locPath2 = Dropout(self.dropout_rate)(locPath2)
+        # globalPath
+        globPath2 
