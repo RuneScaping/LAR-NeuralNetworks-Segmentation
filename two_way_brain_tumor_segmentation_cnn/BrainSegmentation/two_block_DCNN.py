@@ -86,4 +86,8 @@ class TwoBlocksDCNN(object):
         # concatenation of the two path
         path2 = Concatenate(axis=-1)([locPath2, globPath2])
         # output layer
-        output = Conv2D(5, (21, 21), strides=1, padding='valid', activation=
+        output = Conv2D(5, (21, 21), strides=1, padding='valid', activation='softmax', use_bias=True)(path2)
+        #compiling model
+        model = Model(inputs=[input, input_cnn2], outputs=output)
+        sgd = SGD(lr=self.learning_rate, momentum=self.momentum_rate, decay=self.decay_rate, nesterov=False)
+        model.compile(loss='categorical_crossentropy', optimizer=sgd, metri
