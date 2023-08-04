@@ -90,4 +90,12 @@ class TwoBlocksDCNN(object):
         #compiling model
         model = Model(inputs=[input, input_cnn2], outputs=output)
         sgd = SGD(lr=self.learning_rate, momentum=self.momentum_rate, decay=self.decay_rate, nesterov=False)
-        model.compile(loss='categorical_crossentropy', optimizer=sgd, metri
+        model.compile(loss='categorical_crossentropy', optimizer=sgd, metrics=['accuracy'])
+        print 'DCNN done!'
+        return model
+    def fit_DCNN(self, x_train, y_train, ):
+
+
+
+if __name__ == "__main__":
+    model = TwoBlocksDCNN(0.2, 0.003, 0.02, 0.00008, 0.001, 0.001)
