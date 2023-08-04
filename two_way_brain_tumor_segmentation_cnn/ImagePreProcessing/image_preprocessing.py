@@ -105,3 +105,147 @@ class ImagePreProcessing(object):
         :return: normalized slice
         """
         b = np.percentile(passed_slice, 99)
+        t = np.percentile(passed_slice, 1)
+        clipped_slice = np.clip(passed_slice, t, b)
+        if np.std(clipped_slice) == 0:
+            return clipped_slice
+        else:
+            return (clipped_slice - np.mean(clipped_slice)) / np.std(clipped_slice)
+
+    def save_patient(self, reg_norm_n4, patient_num, label):
+        """
+        Save RMIs and labels of one patient
+        :param reg_norm_n4: string, 
+        :param patient_num: int, unique identifier for each patient 'reg' for original images,
+                                'norm' normalized images, 'n4' for n4 normalized images
+        :return: saves png in Norm_PNG directory for normed, Training_PNG for reg
+        """
+        print 'Saving scans for patient {}...'.format(patient_num)
+        if reg_norm_n4 == 'norm':  # saved normed slices
+            for slice_ix in range(176):  # reshape to strip
+                strip = self.normed_slices[slice_ix].reshape(1080, 160)
+                if np.max(strip) != 0:  # set values < 1
+                    strip /= np.max(strip)
+                if np.min(strip) <= -1:  # set values > -1
+                    strip /= abs(np.min(strip))
+                # save as patient_slice.png
+                try:
+                    io.imsave('Norm_PNG/{}_{}.png'.format(patient_num, slice_ix), strip)
+                except:
+                    mkdir_p('Norm_PNG/')
+                    io.imsave('Norm_PNG/{}_{}.png'.format(patient_num, slice_ix), strip)
+
+        elif reg_norm_n4 == 'reg':
+            for slice_ix in range(176):#progress(xrange(176)):
+                strip = self.slices_by_slice[slice_ix].reshape(1080, 160)
+                if np.max(strip) != 0:
+                    strip /= np.max(strip)
+                try:
+                    io.imsave('Training_PNG/{}_{}.png'.format(patient_num, slice_ix), strip)
+                except:
+                    mkdir_p('Training_PNG/')
+                    io.imsave('Training_PNG/{}_{}.png'.format(patient_num, slice_ix), strip)
+        else:
+            for slice_ix in range(176):  # reshape to strip
+                strip = self.normed_slices[slice_ix].reshape(1080, 160)
+                if np.max(strip) != 0:  # set values < 1
+                    strip /= np.max(strip)
+                if np.min(strip) <= -1:  # set values > -1
+                    strip /= abs(np.min(strip))
+                # save as patient_slice.png
+                try:
+                    io.imsave('n4_PNG/{}_{}.png'.format(patient_num, slice_ix), strip)
+                except:
+                    mkdir_p('n4_PNG/')
+                    io.imsave('n4_PNG/{}_{}.png'.format(patient_num, slice_ix), strip)
+
+        #save labels of a patient
+        if label:
+            print 'Saving label of patient ' + str(patient_num)
+            self.save_label(self.slices_by_mode[4], patient_num)
+            print 'Saved!'
+
+    def save_label(self, slices, patient_num):
+        """
+        Load the targets of one patient in format.mha and saves the slices in format png
+        :param slices: list of label slice of a patient (groundTruth)
+        :param patient_num: id-number of the patient
+        """
+        print (slices.shape)
+        for slice_idx, slice_el in enumerate(slices):
+            try:
+                io.imsave('Labels/{}_{}L.png'.format(patient_num, slice_idx), slice_el)
+            except:
+                mkdir_p('Labels/')
+                io.imsave('Labels/{}_{}L.png'.format(patient_num, slice_idx), slice_el)
+
+    def n4itk_norm(self, path, n_dims=3, n_iters='[20,20,10,5]'):
+        """
+        writes n4itk normalized image to parent_dir under orig_filename_n.mha
+        :param path: path to mha T1 or T1c file
+        :param n_dims:  param for n4itk filter
+        :param n_iters: param for n4itk filter
+        :return:
+        """
+
+        output_fn = path[:-4] + '_n.mha'
+        # run n4_bias_correction.py path n_dim n_iters output_fn
+        subprocess.call('python n4_bias_correction.py ' + path + ' ' + str(n_dims) + ' ' + n_iters + ' ' + output_fn,
+                    shell=True)
+
+
+def save_patient_slices(patients_path, type_prep, label):
+    """
+    Save RMIs and targets of each patient
+    :param patients_path: list, string, paths to any directories of patients to save.
+                    for example- glob("Training/HGG/**")
+    :param type_prep: string, reg (non-normalized), norm (normalized, but no bias correction),
+                       n4 (bias corrected and normalized) saves strips of patient slices
+                       to appropriate directory (Training_PNG/, Norm_PNG/ or n4_PNG/) as patient-num_slice-num
+    :param label: bool, True for training sets (there are targets) False for test set (no labels)
+    """
+
+    for patient_num, path in enumerate(patients_path):
+        a = ImagePreProcessing(path)
+        a.save_patient(type_prep, patient_num, label)
+        print 'Patient ' + str(patient_num) + 'saved!'
+
+
+def s3_dump(directory, bucket):
+    """
+    necessary to work with an amzn s3 bucket
+    :param directory: string, directory containing files to save
+    :param bucket: string, name of s3 bucket to dump files
+    :return: 
+    """
+    subprocess.call('aws s3 cp' + ' ' + directory + ' ' + 's3://' + bucket + ' ' + '--recursive')
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(description='Commands to istanciate or load the convolutional neural network')
+    parser.add_argument('-path',
+                        '-p',
+                        action='store',
+                        default=[],
+                        dest='patients_paths',
+                        type=list,
+                        help='insert a list of the paths of the RMIs to preprocess')
+
+    parser.add_argument('-type',
+                        '-t',
+                        action='store',
+                        default='reg',
+                        dest='type_prep',
+                        type=string,
+                        help='reg for non-normalized, norm for normalized, but no bias correction, '
+                             'n4 for bias corrected and normalized')
+    parser.add_argument('-label',
+                        '-l',
+                        action='store',
+                        default=True,
+                        dest='label',
+                        type=bool,
+                        help='True for training sets (there are targets) False for test set (no labels)')
+    result = parser.parse_args()
+    save_patient_slices(result.patients_paths, result.type_prep, result.label)
+
