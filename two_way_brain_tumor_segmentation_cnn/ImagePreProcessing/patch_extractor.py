@@ -132,3 +132,71 @@ class PatchExtractor(object):
                             enter in quantity it using in conjunction with randomly sampled patches.
         :return: list of patches (num_patches, 4, h, w) selected by highest entropy
         """
+        patches, labels = [], []
+        ct = 0
+        while ct < num_patches:
+            im_path = random.choice(self.train_data)
+            fn = os.path.basename(im_path)
+            label = io.imread('Labels/' + fn[:-4] + 'L.png')
+
+            # pick again if slice is only background
+            if len(np.unique(label)) == 1:
+                continue
+
+            img = io.imread(im_path).reshape(5, 240, 240)[:-1].astype('float')
+            l_ent = entropy(label, disk(self.h))
+            top_ent = np.percentile(l_ent, 90)
+
+            # restart if 80th entropy percentile = 0
+            if top_ent == 0:
+                continue
+
+            highest = np.argwhere(l_ent >= top_ent)
+            p_s = random.sample(highest, 3)
+            for p in p_s:
+                p_ix = (p[0] - (self.h / 2), p[0] + ((self.h + 1) / 2), p[1] - (self.w / 2),
+                        p[1] + ((self.w + 1) / 2))
+                patch = np.array([i[p_ix[0]: p_ix[1], p_ix[2]: p_ix[3]] for i in img])
+                # exclude any patches that are too small
+                if np.shape(patch) != (4, 65, 65):
+                    continue
+                patches.append(patch)
+                labels.append(label[p[0], p[1]])
+            ct += 1
+            return np.array(patches[:self.num_samples]), np.array(labels[:self.num_samples])
+
+    def make_training_patches(self, entropy=False, balanced_classes=True, classes=[0, 1, 2, 3, 4]):
+        """
+        
+        :param entropy: boolean,  if True, half of the patches are chosen based on highest entropy area.
+                        defaults to False.
+        :param balanced_classes: boolean, if True, will produce 
+                                an equal number of each class from the randomly chosen samples
+        :param classes: list, (string?), list of classes to sample from. Only change default oif entropy is False and balanced_classes is True
+        :return: X: patches (num_samples, 4_chan, h, w)
+                 y: labels (num_samples,)
+        """
+        if balanced_classes:
+            per_class = self.num_samples / len(classes)
+            patches, labels = [], []
+            progress.currval = 0
+            for i in progress(xrange(len(classes))):
+                p, l = self.find_patches(classes[i], per_class)
+                # set 0 <= pix intensity <= 1
+                for img_ix in xrange(len(p)):
+                    for slice in xrange(len(p[img_ix])):
+                        if np.max(p[img_ix][slice]) != 0:
+                            p[img_ix][slice] /= np.max(p[img_ix][slice])
+                patches.append(p)
+                labels.append(l)
+            return np.array(patches).reshape(self.num_samples, 4, self.h, self.w),\
+                   np.array(labels).reshape(self.num_samples)
+
+        else:
+            print "Use balanced classes, random won't work."
+
+
+
+if __name__ == '__main__':
+    patch = PatchExtractor()
+    patch.make_training_patches()
